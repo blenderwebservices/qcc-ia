@@ -45,7 +45,7 @@
                         <a href="#" class="hover:text-corporate-gold transition">Nosotros</a>
                         <a href="#" class="hover:text-corporate-gold transition">Sectores</a>
                         <a href="#" class="hover:text-corporate-gold transition">Servicios</a>
-                        <a href="#" class="hover:text-corporate-gold transition">Verificación</a>
+                        <a href="{{ route('certificates.index') }}" class="hover:text-corporate-gold transition">Verificación</a>
                         <a href="#" class="hover:text-corporate-gold transition">Contacto</a>
                     </div>
                     <!-- Auth -->
