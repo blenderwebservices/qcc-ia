@@ -87,15 +87,16 @@
                     </div>
                 </div>
                 <div class="md:w-2/5 mt-16 md:mt-0 hidden md:block">
-                    <!-- Placeholder premium image conceptualization -->
-                    <div class="rounded-lg shadow-2xl overflow-hidden border border-slate-700 aspect-[4/5] bg-slate-800 flex items-center justify-center relative">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-black/40 to-transparent"></div>
-                        <div class="text-slate-400 text-center px-6 relative z-10">
-                            <svg class="mx-auto h-16 w-16 text-corporate-gold mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <!-- Premium image conceptualization -->
+                    <div class="rounded-lg shadow-2xl overflow-hidden border border-slate-700 aspect-[4/5] bg-slate-800 flex items-center justify-center relative group">
+                        <img src="{{ asset('images/hero.jpg') }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Auditing professionals" />
+                        <div class="absolute inset-0 bg-gradient-to-tr from-corporate-navy/80 via-black/40 to-transparent"></div>
+                        <div class="text-slate-200 text-center px-6 relative z-10 transition transform group-hover:-translate-y-2 duration-500">
+                            <svg class="mx-auto h-16 w-16 text-corporate-gold mb-4 drop-shadow-md" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                             </svg>
-                            <p class="font-serif text-2xl font-bold text-white mb-2">ISO 9001:2015</p>
-                            <p class="text-sm">Certificación de Excelencia</p>
+                            <p class="font-serif text-3xl font-bold text-white mb-2 drop-shadow-lg">ISO 9001:2015</p>
+                            <p class="text-sm font-medium tracking-wide">Certificación de Excelencia</p>
                         </div>
                     </div>
                 </div>
@@ -115,40 +116,47 @@
                 <!-- Bento UI Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
                     <!-- Bento Box 1 -->
-                    <div class="md:col-span-2 row-span-1 bg-slate-50 rounded-2xl shadow-sm border border-slate-100 p-8 flex flex-col justify-center relative overflow-hidden group hover:shadow-md transition">
-                        <div class="absolute -right-10 -bottom-10 opacity-5 group-hover:opacity-10 transition">
-                            <svg class="h-64 w-64 text-corporate-dark" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.83L19.5 19H4.5L12 5.83zM11 16h2v2h-2v-2zm0-7h2v5h-2V9z"/></svg>
+                    <div class="md:col-span-2 row-span-1 bg-slate-900 rounded-2xl shadow-sm border border-slate-100 p-8 flex flex-col justify-center relative overflow-hidden group hover:shadow-lg transition">
+                        <img src="{{ asset('images/bento1.jpg') }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Auditores" />
+                        <div class="absolute inset-0 bg-slate-900/70 group-hover:bg-slate-900/60 transition duration-700"></div>
+                        <div class="absolute -right-10 -bottom-10 opacity-10 group-hover:opacity-20 transition text-white">
+                            <svg class="h-64 w-64" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.83L19.5 19H4.5L12 5.83zM11 16h2v2h-2v-2zm0-7h2v5h-2V9z"/></svg>
                         </div>
-                        <h3 class="font-serif text-2xl font-semibold text-corporate-dark mb-3">Auditores con Experiencia</h3>
-                        <p class="text-slate-600 max-w-md relative z-10">Nuestro equipo está conformado por personal altamente capacitado con años de trayectoria evaluando diversos sectores industriales.</p>
+                        <h3 class="font-serif text-2xl font-semibold text-white mb-3 relative z-10 drop-shadow">Auditores con Experiencia</h3>
+                        <p class="text-slate-300 max-w-md relative z-10">Nuestro equipo está conformado por personal altamente capacitado con años de trayectoria evaluando diversos sectores industriales.</p>
                     </div>
 
                     <!-- Bento Box 2 -->
                     <div class="bg-corporate-navy text-white rounded-2xl shadow-sm p-8 flex flex-col justify-center relative overflow-hidden group">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent z-0"></div>
-                        <div class="relative z-10">
-                            <svg class="h-10 w-10 text-corporate-gold mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <img src="{{ asset('images/bento2.jpg') }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Mejora continua" />
+                        <div class="absolute inset-0 bg-corporate-navy/80 group-hover:bg-corporate-navy/60 transition duration-700"></div>
+                        <div class="relative z-10 block w-full h-full">
+                            <svg class="h-10 w-10 text-corporate-gold mb-4 relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                             </svg>
-                            <h3 class="font-serif text-xl font-semibold mb-2">Mejora Continua</h3>
-                            <p class="text-slate-300 text-sm">Optimizamos tus sistemas de gestión para alcanzar la excelencia y mayor satisfacción del cliente.</p>
+                            <h3 class="font-serif text-xl font-semibold mb-2 relative z-10 drop-shadow">Mejora Continua</h3>
+                            <p class="text-slate-200 text-sm relative z-10">Optimizamos tus sistemas de gestión para alcanzar la excelencia y mayor satisfacción del cliente.</p>
                         </div>
                     </div>
 
                     <!-- Bento Box 3 -->
-                    <div class="bg-corporate-gold text-corporate-navy rounded-2xl shadow-sm p-8 flex flex-col justify-center relative overflow-hidden">
-                        <h3 class="font-serif text-xl font-semibold mb-2">Acceso a nuevos mercados</h3>
-                        <p class="text-corporate-dark/80 text-sm mb-4">La certificación abre puertas a nivel global.</p>
-                        <a href="#" class="font-bold inline-flex items-center hover:opacity-80">Conoce más <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></a>
+                    <div class="bg-corporate-gold text-corporate-navy rounded-2xl shadow-sm p-8 flex flex-col justify-center relative overflow-hidden group">
+                        <img src="{{ asset('images/bento3.jpg') }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Mercados globales" />
+                        <div class="absolute inset-0 bg-corporate-gold/80 group-hover:bg-corporate-gold/60 transition duration-700"></div>
+                        <h3 class="font-serif text-xl font-semibold mb-2 relative z-10 drop-shadow-sm">Acceso a nuevos mercados</h3>
+                        <p class="text-corporate-dark text-sm mb-4 relative z-10 font-medium">La certificación abre puertas a nivel global.</p>
+                        <a href="#" class="font-bold inline-flex items-center hover:opacity-80 relative z-10">Conoce más <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></a>
                     </div>
 
                     <!-- Bento Box 4 -->
-                    <div class="md:col-span-2 bg-slate-50 rounded-2xl shadow-sm border border-slate-100 p-8 flex lg:flex-row flex-col justify-center items-center lg:justify-between gap-6 hover:shadow-md transition">
-                        <div>
-                            <h3 class="font-serif text-2xl font-semibold text-corporate-dark mb-3">Confianza y Credibilidad</h3>
-                            <p class="text-slate-600 max-w-lg">Quality & Competitive College es un Organismo Certificador fundado en el año 2003. Más de 20 años respaldan nuestro compromiso con la calidad.</p>
+                    <div class="md:col-span-2 bg-slate-900 rounded-2xl shadow-sm border border-slate-100 p-8 flex lg:flex-row flex-col justify-center items-center lg:justify-between gap-6 hover:shadow-md transition relative overflow-hidden group">
+                        <img src="{{ asset('images/bento4.jpg') }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Confianza" />
+                        <div class="absolute inset-0 bg-slate-900/80 group-hover:bg-slate-900/70 transition duration-700"></div>
+                        <div class="relative z-10">
+                            <h3 class="font-serif text-2xl font-semibold text-white mb-3 drop-shadow">Confianza y Credibilidad</h3>
+                            <p class="text-slate-300 max-w-lg drop-shadow-sm">Quality & Competitive College es un Organismo Certificador fundado en el año 2003. Más de 20 años respaldan nuestro compromiso con la calidad.</p>
                         </div>
-                        <div class="h-16 w-16 bg-white rounded-full flex items-center justify-center shadow">
+                        <div class="h-16 w-16 bg-white rounded-full flex items-center justify-center shadow-lg relative z-10 ring-4 ring-corporate-gold/20">
                             <span class="font-serif text-2xl text-corporate-emerald font-bold">20+</span>
                         </div>
                     </div>
@@ -196,5 +204,18 @@
             </div>
         </footer>
 
+        <livewire:chatbot />
+        @livewireScripts
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <script>
+            // Inicializar iconos de Lucide
+            lucide.createIcons();
+
+            // Escuchar evento para abrir chatbot desde el menú
+            window.addEventListener('toggle-chatbot', () => {
+                 const event = new CustomEvent('click');
+                 document.getElementById('chatbot-trigger').dispatchEvent(event);
+            });
+        </script>
     </body>
 </html>
