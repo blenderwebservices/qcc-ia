@@ -11,3 +11,5 @@ Route::middleware('throttle:5,1')->group(function () {
     Route::post('/consulta', [\App\Http\Controllers\CertificateController::class, 'search'])->name('certificates.search');
     Route::post('/consulta/recordar', [\App\Http\Controllers\CertificateController::class, 'forgotPassword'])->name('certificates.forgot-password');
 });
+
+Route::view('/nosotros', 'nosotros')->name('nosotros');

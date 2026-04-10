@@ -41,8 +41,8 @@
                     </div>
                     <!-- Menu -->
                     <div class="hidden md:flex space-x-8 items-center text-sm font-medium">
-                        <a href="#" class="hover:text-corporate-gold transition">Inicio</a>
-                        <a href="#" class="hover:text-corporate-gold transition">Nosotros</a>
+                        <a href="/" class="hover:text-corporate-gold transition">Inicio</a>
+                        <a href="{{ route('nosotros') }}" class="hover:text-corporate-gold transition">Nosotros</a>
                         <a href="#" class="hover:text-corporate-gold transition">Sectores</a>
                         <a href="#" class="hover:text-corporate-gold transition">Servicios</a>
                         <a href="{{ route('certificates.index') }}" class="hover:text-corporate-gold transition">Verificación</a>
