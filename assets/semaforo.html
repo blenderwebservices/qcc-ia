@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico Inicial SGC</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilos personalizados para el Gauge y animaciones */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9; /* Color de fondo general claro */
+        }
+        
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Suavidad en el movimiento de la aguja */
+        #needle {
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* Toggle switch personalizado para igualar la captura */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #4b5563; /* text-gray-600 */
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #4b5563;
+        }
+        .toggle-checkbox {
+            right: 0;
+            z-index: 1;
+            border-color: #e5e7eb;
+            transition: all 0.3s;
+        }
+        .toggle-label {
+            background-color: #e5e7eb;
+            transition: all 0.3s;
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8 text-gray-800 antialiased flex flex-col items-center">
+
+    <!-- Card Principal (Dashboard) -->
+    <div class="w-full max-w-5xl bg-[#f8fafd] rounded-3xl shadow-sm border border-gray-200 p-8 md:p-12 mb-6">
+        
+        <!-- Cabecera -->
+        <div class="flex flex-col md:flex-row justify-between items-start border-b border-gray-200 pb-6 mb-6 gap-6">
+            <h1 class="text-3xl font-semibold tracking-tight text-gray-900">Diagnóstico Inicial SGC (QCC)</h1>
+            
+            <div class="flex flex-wrap gap-8">
+                <div class="flex flex-col">
+                    <span class="text-xs font-semibold text-gray-500 tracking-wider mb-1">PUNTAJE</span>
+                    <div class="text-2xl font-bold font-mono text-gray-900">
+                        <span id="lbl-score">0</span> / 12
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xs font-semibold text-gray-500 tracking-wider mb-1">NIVEL</span>
+                    <span id="lbl-level" class="text-xl font-bold font-mono text-gray-800">Sistema Inmaduro</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xs font-semibold text-gray-500 tracking-wider mb-1">ESTATUS</span>
+                    <span id="lbl-status" class="text-xl font-bold font-mono text-gray-800 uppercase">NO CERTIFICABLE</span>
+                </div>
+                <!-- Botón de Imprimir PDF -->
+                <div class="flex flex-col justify-end">
+                    <button id="btn-print" class="px-5 py-2.5 bg-gray-900 hover:bg-gray-800 text-white text-sm font-semibold rounded-xl shadow-sm transition-all flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Imprimir PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <p class="text-base text-gray-800 mb-10" id="lbl-recommendation">
+            Recomendación: Destinar asesoría/consultoría y recursos a gran escala.
+        </p>
+
+        <!-- Gráfico Gauge -->
+        <div class="relative w-[340px] h-[170px] mx-auto mt-16 mb-12">
+            <!-- Arco del Gauge en SVG -->
+            <svg viewBox="0 0 200 100" class="w-full h-full overflow-visible">
+                <path d="M 10 100 A 90 90 0 0 1 190 100" fill="none" stroke="#e2e8f0" stroke-width="20" stroke-linecap="round"/>
+            </svg>
+            
+            <!-- Aguja del medidor -->
+            <!-- transform-origin en el centro derecho. Rotación 0 = Izquierda, 180 = Derecha -->
+            <div class="absolute bottom-0 left-0 w-1/2 h-3 flex items-center justify-end origin-right" id="needle" style="transform: rotate(0deg);">
+                <div class="w-full h-2 bg-[#1f2937] rounded-l-full shadow-sm"></div>
+                <!-- Círculo central pivot -->
+                <div class="absolute -right-[14px] w-7 h-7 bg-[#1f2937] rounded-full border-[5px] border-[#f8fafd] shadow-sm z-10 flex items-center justify-center">
+                    <div class="w-1.5 h-1.5 bg-[#f8fafd] rounded-full"></div>
+                </div>
+            </div>
+
+            <!-- Etiquetas numéricas del Gauge -->
+            <div class="absolute -left-6 bottom-[-10px] bg-white border border-gray-100 text-gray-800 w-10 h-10 rounded-full flex items-center justify-center font-semibold shadow-sm text-sm">0</div>
+            <div class="absolute top-[-30px] left-1/2 -translate-x-1/2 bg-white border border-gray-100 text-gray-800 w-10 h-10 rounded-full flex items-center justify-center font-semibold shadow-sm text-sm">6</div>
+            <div class="absolute top-0 right-10 bg-white border border-gray-100 text-gray-800 w-10 h-10 rounded-full flex items-center justify-center font-semibold shadow-sm text-sm">9</div>
+            <div class="absolute -right-6 bottom-[-10px] bg-white border border-gray-100 text-gray-800 w-10 h-10 rounded-full flex items-center justify-center font-semibold shadow-sm text-sm">12</div>
+
+            <!-- Centro inferior de Puntos Totales -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 mt-4 text-center">
+                <span class="text-sm font-medium text-gray-800 tracking-wide">PUNTOS TOTALES</span>
+                <div id="lbl-gauge-score" class="text-4xl font-bold mt-1 text-gray-900">0</div>
+            </div>
+            
+            <!-- Icono En Desarrollo (Ficticio para adornar la captura) -->
+            <div class="absolute -bottom-24 left-1/2 -translate-x-1/2 flex flex-col items-center">
+                <div class="text-[#eab308] mb-2 relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                        <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                        <circle cx="16" cy="16" r="4"></circle>
+                        <polyline points="16 14 16 16 17.5 17.5"></polyline>
+                    </svg>
+                </div>
+                <span class="font-bold text-lg text-[#eab308] tracking-widest uppercase">EN DESARROLLO</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Controles (Toggles) -->
+    <div class="w-full max-w-5xl bg-[#f4f6f9] rounded-3xl shadow-sm border border-gray-200 p-8 md:p-12 mb-12">
+        
+        <!-- Grid de Preguntas 1 a 11 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6" id="questions-container">
+            <!-- Generado por JS -->
+        </div>
+
+        <div class="flex items-center justify-center my-12">
+            <span class="px-6 py-2 bg-[#e2e8f0] text-gray-600 rounded-full text-sm font-semibold tracking-wider">
+                --- CAPACITACIONES ---
+            </span>
+        </div>
+
+        <!-- Grid de Capacitaciones -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6" id="trainings-container">
+            <!-- Generado por JS -->
+        </div>
+
+        <!-- Botón Reiniciar -->
+        <div class="mt-14 flex justify-end">
+            <button id="btn-reset" class="px-8 py-3 bg-[#e2e8f0] hover:bg-[#cbd5e1] text-gray-700 font-medium rounded-full transition-colors flex items-center shadow-sm">
+                Reiniciar Diagnóstico
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        // Datos Estructurados
+        const questions = [
+            { id: 'q1', label: '1. Alcance Definido' },
+            { id: 'q2', label: '2. Objetivos de Calidad' },
+            { id: 'q3', label: '3. Gestión de Riesgos' },
+            { id: 'q4', label: '4. Control Documental' },
+            { id: 'q5', label: '5. Roles y Responsabilidades' },
+            { id: 'q6', label: '6. Plan de Capacitación' },
+            { id: 'q7', label: '7. Evaluación Proveedores' },
+            { id: 'q8', label: '8. Satisfacción Cliente' },
+            { id: 'q9', label: '9. Revisión por Dirección' },
+            { id: 'q10', label: '10. Auditoría Interna' },
+            { id: 'q11', label: '11. No Conformidades' }
+        ];
+
+        const trainings = [
+            { id: 't1', label: 'ISO 9000:2015' },
+            { id: 't2', label: 'ISO 9001:2015' },
+            { id: 't3', label: 'Liderazgo' },
+            { id: 't4', label: 'ISO 19011:2018' },
+            { id: 't5', label: 'ISO 31000:2018' },
+            { id: 't6', label: 'ISO 31010:2019' },
+            { id: 't7', label: 'Mapeo de Procesos' }
+        ];
+
+        // Función para renderizar Toggles
+        function createToggleHTML(item, isTraining = false) {
+            return `
+                <div class="flex justify-between items-center bg-transparent py-1">
+                    <span class="text-lg text-gray-700">${item.label}</span>
+                    <div class="relative inline-block w-12 h-6 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" name="toggle" id="${item.id}" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer data-training="${isTraining}"/>
+                        <label for="${item.id}" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Inicializar el DOM
+        document.addEventListener('DOMContentLoaded', () => {
+            const questionsContainer = document.getElementById('questions-container');
+            const trainingsContainer = document.getElementById('trainings-container');
+
+            // Inyectar HTML
+            questionsContainer.innerHTML = questions.map(q => createToggleHTML(q)).join('');
+            trainingsContainer.innerHTML = trainings.map(t => createToggleHTML(t, true)).join('');
+
+            // Agregar Event Listeners a todos los checkboxes
+            const allCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+            allCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', calculateAndRender);
+            });
+
+            // Botón Reiniciar
+            document.getElementById('btn-reset').addEventListener('click', () => {
+                allCheckboxes.forEach(checkbox => checkbox.checked = false);
+                calculateAndRender();
+            });
+
+            // Lógica de Impresión PDF
+            document.getElementById('btn-print').addEventListener('click', () => {
+                // Obtener Datos
+                const finalScore = parseInt(document.getElementById('lbl-score').innerText);
+                const level = document.getElementById('lbl-level').innerText;
+                const status = document.getElementById('lbl-status').innerText;
+                const recommendation = document.getElementById('lbl-recommendation').innerText;
+                
+                // Generar Gráfico Gauge en Canvas (asegura compatibilidad total en el PDF)
+                const canvas = document.createElement('canvas');
+                canvas.width = 400;
+                canvas.height = 220;
+                const ctx = canvas.getContext('2d');
+                
+                // Fondo
+                ctx.clearRect(0, 0, 400, 220);
+                
+                // Arco
+                ctx.beginPath();
+                ctx.arc(200, 180, 150, Math.PI, 0); 
+                ctx.lineWidth = 30;
+                ctx.strokeStyle = '#e2e8f0';
+                ctx.lineCap = 'round';
+                ctx.stroke();
+                
+                // Textos
+                ctx.font = 'bold 24px sans-serif';
+                ctx.fillStyle = '#333';
+                ctx.fillText('0', 20, 210);
+                ctx.fillText('6', 192, 24);
+                ctx.fillText('12', 350, 210);
+                
+                // Aguja
+                const angleRad = Math.PI - ((finalScore / 12) * Math.PI);
+                const needleLength = 150;
+                const x = 200 + needleLength * Math.cos(angleRad);
+                const y = 180 - needleLength * Math.sin(angleRad);
+                
+                ctx.beginPath();
+                ctx.moveTo(200, 180);
+                ctx.lineTo(x, y);
+                ctx.lineWidth = 10;
+                ctx.strokeStyle = '#1f2937';
+                ctx.lineCap = 'round';
+                ctx.stroke();
+                
+                // Centro
+                ctx.beginPath();
+                ctx.arc(200, 180, 15, 0, 2 * Math.PI);
+                ctx.fillStyle = '#1f2937';
+                ctx.fill();
+                
+                ctx.beginPath();
+                ctx.arc(200, 180, 6, 0, 2 * Math.PI);
+                ctx.fillStyle = '#f8fafd';
+                ctx.fill();
+                
+                const gaugeImage = canvas.toDataURL('image/png');
+
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = '/diagnostico/pdf';
+                
+                // Token CSRF Inyectado
+                const csrfInput = document.createElement('input');
+                csrfInput.type = 'hidden';
+                csrfInput.name = '_token';
+                csrfInput.value = '__CSRF_TOKEN__';
+                form.appendChild(csrfInput);
+
+                const addInput = (name, value) => {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = name;
+                    input.value = value;
+                    form.appendChild(input);
+                };
+
+                addInput('score', finalScore);
+                addInput('level', level);
+                addInput('status', status);
+                addInput('recommendation', recommendation);
+                addInput('gauge_image', gaugeImage);
+
+                questions.forEach((q, i) => {
+                    addInput(`questions[${i}][label]`, q.label);
+                    addInput(`questions[${i}][checked]`, document.getElementById(q.id).checked ? 1 : 0);
+                });
+
+                trainings.forEach((t, i) => {
+                    addInput(`trainings[${i}][label]`, t.label);
+                    addInput(`trainings[${i}][checked]`, document.getElementById(t.id).checked ? 1 : 0);
+                });
+
+                document.body.appendChild(form);
+
+                // Cambiar estado del boton
+                const btn = document.getElementById('btn-print');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = `<svg class="animate-spin h-5 w-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Generando...`;
+                btn.disabled = true;
+
+                form.submit();
+
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    document.body.removeChild(form);
+                }, 2000);
+            });
+
+            // Cálculo inicial
+            calculateAndRender();
+        });
+
+        // Lógica Principal de Evaluación
+        function calculateAndRender() {
+            // 1. Calcular Puntuación
+            let scoreQuestions = 0;
+            questions.forEach(q => {
+                if(document.getElementById(q.id).checked) scoreQuestions++;
+            });
+
+            let hasTraining = false;
+            trainings.forEach(t => {
+                if(document.getElementById(t.id).checked) hasTraining = true;
+            });
+
+            const finalScore = scoreQuestions + (hasTraining ? 1 : 0);
+
+            // 2. Determinar Diagnóstico según el Documento QCC
+            let level, status, recommendation, statusColor;
+
+            if (finalScore <= 5) {
+                level = "Sistema Inmaduro";
+                status = "NO CERTIFICABLE";
+                statusColor = "text-gray-900"; // En las capturas, usa negro, no colores agresivos
+                recommendation = "Recomendación: Destinar asesoría/consultoría y recursos a gran escala para establecer bases del SGC.";
+            } 
+            else if (finalScore >= 6 && finalScore <= 8) {
+                level = "Sistema Inmaduro";
+                status = "NO CERTIFICABLE";
+                statusColor = "text-gray-900";
+                recommendation = "Recomendación: Destinar asesoría/consultoría y recursos para el reforzamiento de metodologías y herramientas.";
+            } 
+            else if (finalScore >= 9 && finalScore <= 10) {
+                level = "Madurez Transitoria";
+                status = "NO CERTIFICABLE";
+                statusColor = "text-gray-900";
+                recommendation = "Recomendación: Destinar recursos para el seguimiento y mejora. Realizar auditoría diagnóstica.";
+            } 
+            else {
+                level = "Sistema Maduro";
+                status = "SÍ CERTIFICABLE";
+                statusColor = "text-green-700"; // Destaque positivo cuando sí lo es
+                recommendation = "Recomendación: Realizar auditoría diagnóstica para identificar desviaciones antes de la auditoría de certificación.";
+            }
+
+            // 3. Actualizar DOM (Textos)
+            document.getElementById('lbl-score').innerText = finalScore;
+            document.getElementById('lbl-gauge-score').innerText = finalScore;
+            document.getElementById('lbl-level').innerText = level;
+            
+            const lblStatus = document.getElementById('lbl-status');
+            lblStatus.innerText = status;
+            lblStatus.className = `text-xl font-bold font-mono uppercase ${statusColor}`;
+            
+            document.getElementById('lbl-recommendation').innerText = recommendation;
+
+            // 4. Actualizar Animación de la Aguja del Gauge
+            // Si el score es 0 -> rotación 0 grados (apunta a la izq)
+            // Si el score es 12 -> rotación 180 grados (apunta a la der)
+            const angle = (finalScore / 12) * 180;
+            const needle = document.getElementById('needle');
+            needle.style.transform = `rotate(${angle}deg)`;
+        }
+    </script>
+</body>
+</html>
