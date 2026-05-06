@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QCC - Sectores y Cotización de Certificación</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        },
+                        secondary: '#0f172a'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .bg-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50 antialiased selection:bg-primary-500 selection:text-white">
+
+    <!-- Navegación -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                    <div class="w-10 h-10 bg-primary-700 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                        QCC
+                    </div>
+                    <span class="font-bold text-xl text-secondary hidden sm:block tracking-tight">Quality & Competitive College</span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="qcc_servicios.html" class="text-gray-600 hover:text-primary-600 font-medium transition-colors">Inicio</a>
+                    <a href="#sectores" class="text-primary-600 font-bold border-b-2 border-primary-600 pb-1">Sectores</a>
+                    <a href="#cotizacion" class="text-gray-600 hover:text-primary-600 font-medium transition-colors">Esquema de Inversión</a>
+                    <a href="#cotizar" class="bg-primary-600 hover:bg-primary-700 text-white px-5 py-2.5 rounded-full font-medium transition-all shadow-md transform hover:-translate-y-0.5">Solicitar Presupuesto</a>
+                </div>
+                <!-- Menú móvil -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-600 hover:text-primary-600 focus:outline-none p-2">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-secondary to-primary-900 text-white overflow-hidden bg-pattern">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 lg:py-28 flex flex-col items-center text-center">
+            <span class="bg-white/10 text-primary-100 border border-white/20 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-6 shadow-sm inline-flex items-center gap-2 backdrop-blur-sm">
+                <i data-lucide="briefcase" class="w-4 h-4"></i> Auditoría Especializada
+            </span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight max-w-4xl">
+                Soluciones para su <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-cyan-300">Sector Específico</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 max-w-3xl mb-10 leading-relaxed font-light">
+                Entendemos que cada industria tiene retos únicos. Desarrollamos propuestas de valor y certificaciones ajustadas a las normativas de la administración pública, salud, educación y servicios sociales.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#sectores" class="bg-primary-600 hover:bg-primary-500 text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-lg flex items-center justify-center gap-2">
+                    Ver Códigos y Sectores
+                    <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                </a>
+                <a href="#cotizacion" class="bg-white text-secondary hover:bg-gray-50 px-8 py-3.5 rounded-full font-bold transition-all shadow-lg flex items-center justify-center gap-2">
+                    ¿Cómo cotizamos?
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Barra de Experiencia -->
+    <div class="bg-primary-600 text-white py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-x divide-primary-500/50">
+                <div>
+                    <div class="text-2xl font-bold">2014</div>
+                    <div class="text-primary-100 text-sm mt-1">Admin. Pública</div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold">2016</div>
+                    <div class="text-primary-100 text-sm mt-1">Sector Salud</div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold">2019</div>
+                    <div class="text-primary-100 text-sm mt-1">Educación</div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold">2021</div>
+                    <div class="text-primary-100 text-sm mt-1">Servicios Sociales</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sectores / Scopes Section -->
+    <section id="sectores" class="py-20 lg:py-28 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-primary-600 font-bold tracking-wide uppercase text-sm mb-2">Alcance de Certificación</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-secondary mb-4">Experiencia que respalda su industria</h3>
+                <p class="text-gray-600 text-lg">Conocemos a fondo los requisitos legales, técnicos y operativos de los sectores más críticos, asegurando auditorías de valor, no solo de cumplimiento.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                
+                <!-- Sector 1: Administración Pública -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 card-hover-effect transition-all duration-300 flex flex-col h-full relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-primary-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-14 h-14 bg-primary-100 text-primary-700 rounded-xl flex items-center justify-center">
+                            <i data-lucide="landmark" class="w-7 h-7"></i>
+                        </div>
+                        <div class="flex gap-2">
+                            <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2.5 py-1 rounded">IAF: 36</span>
+                            <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2.5 py-1 rounded">NACE: L/84</span>
+                        </div>
+                    </div>
+                    <h4 class="text-2xl font-bold text-secondary mb-2">Administración Pública</h4>
+                    <p class="text-primary-600 text-sm font-medium mb-6">Una maravillosa colaboración desde 2014</p>
+                    
+                    <div class="space-y-4 flex-grow text-gray-600 text-sm leading-relaxed">
+                        <div>
+                            <strong class="text-secondary block mb-1">¿Qué comprende?</strong>
+                            Abarca la planificación, gestión y supervisión de las políticas públicas orientadas al desarrollo económico y social, así como a la seguridad nacional.
+                        </div>
+                        <div>
+                            <strong class="text-secondary block mb-1">¿Qué incluye?</strong>
+                            Administración fiscal, diseño y programas de salud, educación, vivienda, medio ambiente y cultura; regulación de sectores estratégicos; coordinación de relaciones exteriores, justicia, defensa, orden público y protección civil.
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 pt-5 border-t border-gray-100">
+                        <strong class="text-primary-700 flex items-center gap-2 mb-2">
+                            <i data-lucide="target" class="w-4 h-4"></i> Finalidad
+                        </strong>
+                        <p class="text-sm text-gray-600">Garantizar un entorno institucional eficiente, transparente y orientado al bienestar colectivo y la competitividad del país.</p>
+                    </div>
+                </div>
+
+                <!-- Sector 2: Salud y Asistencia Social -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 card-hover-effect transition-all duration-300 flex flex-col h-full relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-rose-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-14 h-14 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center">
+                            <i data-lucide="heart-pulse" class="w-7 h-7"></i>
+                        </div>
+                        <div class="flex gap-2 flex-wrap justify-end max-w-[50%]">
+                            <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2.5 py-1 rounded mb-1">IAF: 38</span>
+                            <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2.5 py-1 rounded mb-1">NACE: N/75, 86, 87, 88</span>
+                        </div>
+                    </div>
+                    <h4 class="text-2xl font-bold text-secondary mb-2">Salud y Asistencia Social</h4>
+                    <p class="text-rose-600 text-sm font-medium mb-6">Creciendo juntos desde 2016</p>
+                    
+                    <div class="space-y-4 flex-grow text-gray-600 text-sm leading-relaxed">
+                        <div>
+                            <strong class="text-secondary block mb-1">¿Qué comprende?</strong>
+                            Abarca el sector de la salud y asistencia social, incluyendo actividades de médicos, hospitalarias, odontológicas y de cuidado especializado.
+                        </div>
+                        <div>
+                            <strong class="text-secondary block mb-1">¿Qué incluye?</strong>
+                            Certificamos la calidad en hospitales, clínicas, centros de rehabilitación, residencias geriátricas, instituciones para personas con discapacidad, servicios paramédicos, ambulancias y actividades veterinarias.
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 pt-5 border-t border-gray-100">
+                        <strong class="text-rose-600 flex items-center gap-2 mb-2">
+                            <i data-lucide="target" class="w-4 h-4"></i> Finalidad
+                        </strong>
+                        <p class="text-sm text-gray-600">Aseguramos que los procesos cumplan con estándares nacionales e internacionales, garantizando atención segura, ética y eficaz.</p>
+                    </div>
+                </div>
+
+                <!-- Sector 3: Educación -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 card-hover-effect transition-all duration-300 flex flex-col h-full relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-amber-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center">
+                            <i data-lucide="graduation-cap" class="w-7 h-7"></i>
+                        </div>
+                        <div class="flex gap-2">
+                            <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2.5 py-1 rounded">IAF: 37</span>
+                        </div>
+                    </div>
+                    <h4 class="text-2xl font-bold text-secondary mb-2">Sector Educativo</h4>
+                    <p class="text-amber-600 text-sm font-medium mb-6">Una colaboración exitosa desde 2019</p>
+                    
+                    <div class="space-y-4 flex-grow text-gray-600 text-sm leading-relaxed">
+                        <div>
+                            <strong class="text-secondary block mb-1">¿Qué comprende?</strong>
+                            La evaluación y certificación de instituciones educativas en diversos niveles formativos, enfocadas en la mejora continua de la enseñanza.
+                        </div>
+                        <div>
+                            <strong class="text-secondary block mb-1">¿Qué incluye?</strong>
+                            Programas técnicos, formación continua, capacitación para el trabajo, actividades culturales, deportivas y todos los servicios auxiliares de apoyo educativo.
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 pt-5 border-t border-gray-100">
+                        <strong class="text-amber-600 flex items-center gap-2 mb-2">
+                            <i data-lucide="target" class="w-4 h-4"></i> Finalidad
+                        </strong>
+                        <p class="text-sm text-gray-600">Nuestro enfoque en la certificación fortalece la confianza y la excelencia en los procesos formativos e instituciones académicas.</p>
+                    </div>
+                </div>
+
+                <!-- Sector 4: Servicios Sociales y Sostenibilidad -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 card-hover-effect transition-all duration-300 flex flex-col h-full relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center">
+                            <i data-lucide="leaf" class="w-7 h-7"></i>
+                        </div>
+                        <div class="flex gap-2">
+                            <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2.5 py-1 rounded">IAF: 39</span>
+                        </div>
+                    </div>
+                    <h4 class="text-2xl font-bold text-secondary mb-2">Servicios Sociales y Sostenibilidad</h4>
+                    <p class="text-emerald-600 text-sm font-medium mb-6">Socios exitosos desde 2021</p>
+                    
+                    <div class="space-y-4 flex-grow text-gray-600 text-sm leading-relaxed">
+                        <div>
+                            <strong class="text-secondary block mb-1">¿Qué comprende?</strong>
+                            Abarca un amplio espectro de servicios esenciales para la sociedad y el cuidado del entorno ecológico e infraestructura municipal.
+                        </div>
+                        <div>
+                            <strong class="text-secondary block mb-1">¿Qué incluye?</strong>
+                            Gestión de aguas residuales, recolección y tratamiento de residuos, descontaminación ambiental, actividades recreativas, informativas y de asistencia social pública.
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 pt-5 border-t border-gray-100">
+                        <strong class="text-emerald-600 flex items-center gap-2 mb-2">
+                            <i data-lucide="target" class="w-4 h-4"></i> Finalidad
+                        </strong>
+                        <p class="text-sm text-gray-600">Certificamos procesos que garantizan la sostenibilidad, seguridad y calidad en el servicio, impactando directamente en el bienestar comunitario y medio ambiente.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Cómo cotizamos (Pricing Explanation) -->
+    <section id="cotizacion" class="py-20 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5">
+                    <h2 class="text-primary-600 font-bold tracking-wide uppercase text-sm mb-2">Inversión a la Medida</h2>
+                    <h3 class="text-3xl font-bold text-secondary mb-6">¿Cómo calculamos su propuesta económica?</h3>
+                    <p class="text-gray-600 mb-6">
+                        Como Organismo Certificador, no manejamos "paquetes estándar". Nuestras cotizaciones están estrictamente apegadas a las normativas del <strong>Foro Internacional de Acreditación (IAF)</strong> para garantizar la imparcialidad y el tiempo correcto de auditoría.
+                    </p>
+                    <p class="text-gray-600 mb-8">
+                        El costo de certificación depende de variables específicas de su organización.
+                    </p>
+                </div>
+                
+                <div class="lg:col-span-7">
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="bg-gray-50 p-6 rounded-xl border border-gray-100">
+                            <i data-lucide="users" class="w-8 h-8 text-primary-500 mb-4"></i>
+                            <h5 class="font-bold text-secondary mb-2">Tamaño de la empresa</h5>
+                            <p class="text-sm text-gray-500">Cantidad de empleados involucrados en el alcance del Sistema de Gestión (tiempo efectivo de auditoría).</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-xl border border-gray-100">
+                            <i data-lucide="map" class="w-8 h-8 text-primary-500 mb-4"></i>
+                            <h5 class="font-bold text-secondary mb-2">Número de sitios</h5>
+                            <p class="text-sm text-gray-500">Cantidad de sucursales, plantas u oficinas que serán incluidas en el certificado final.</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-xl border border-gray-100">
+                            <i data-lucide="book-open-check" class="w-8 h-8 text-primary-500 mb-4"></i>
+                            <h5 class="font-bold text-secondary mb-2">Norma a Certificar</h5>
+                            <p class="text-sm text-gray-500">ISO 9001, ISO 14001, NOMs, u otras integraciones que requieran especialistas distintos.</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-xl border border-gray-100">
+                            <i data-lucide="settings" class="w-8 h-8 text-primary-500 mb-4"></i>
+                            <h5 class="font-bold text-secondary mb-2">Complejidad del Sector</h5>
+                            <p class="text-sm text-gray-500">El riesgo asociado a la industria (ej. sector salud vs. sector administrativo) define el perfil del auditor.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cotizador / Formulario de Contacto Especializado -->
+    <section id="cotizar" class="py-24 bg-primary-900 text-white relative">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-primary-600/30 blur-3xl"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Solicite su Presupuesto Oficial</h2>
+                <p class="text-primary-200">Complete los datos de su organización para que nuestro equipo le envíe una propuesta comercial exacta, sin compromisos.</p>
+            </div>
+
+            <div class="bg-white text-gray-800 rounded-2xl shadow-2xl p-8 md:p-10">
+                <form class="space-y-6" onsubmit="event.preventDefault(); alert('Solicitud de cotización enviada. Un asesor se comunicará pronto.');">
+                    
+                    <h3 class="font-bold text-lg border-b pb-2 mb-4 text-secondary">1. Datos de Contacto</h3>
+                    <div class="grid md:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nombre Completo *</label>
+                            <input type="text" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Correo Electrónico Corporativo *</label>
+                            <input type="email" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Teléfono Directo</label>
+                            <input type="tel" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Empresa o Institución *</label>
+                            <input type="text" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none">
+                        </div>
+                    </div>
+
+                    <h3 class="font-bold text-lg border-b pb-2 mt-8 mb-4 text-secondary">2. Información para Cotización</h3>
+                    <div class="grid md:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Sector Principal *</label>
+                            <select required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none bg-white">
+                                <option value="">Seleccione su sector...</option>
+                                <option value="admin">Administración Pública</option>
+                                <option value="salud">Salud y Asistencia Social</option>
+                                <option value="educacion">Educación</option>
+                                <option value="sociales">Servicios Sociales / Medio Ambiente</option>
+                                <option value="otro">Otro (Especificar en comentarios)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Número de Empleados *</label>
+                            <select required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none bg-white">
+                                <option value="">Seleccione rango...</option>
+                                <option value="1-15">1 a 15 empleados</option>
+                                <option value="16-50">16 a 50 empleados</option>
+                                <option value="51-100">51 a 100 empleados</option>
+                                <option value="101+">Más de 100 empleados</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Comentarios Adicionales (Norma requerida, número de sitios, etc.)</label>
+                        <textarea rows="3" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none resize-none" placeholder="Ej. Necesitamos cotizar ISO 9001 para nuestra matriz y 2 sucursales..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-4 px-6 rounded-lg transition-colors shadow-lg text-lg flex justify-center items-center gap-2">
+                        <i data-lucide="calculator" class="w-5 h-5"></i>
+                        Solicitar Cotización Formal
+                    </button>
+                    <p class="text-xs text-center text-gray-500 mt-4">Al enviar este formulario, un experto de QCC evaluará sus datos para calcular los días-auditor requeridos según las reglas IAF.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-gray-400 py-10 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-primary-600 rounded flex items-center justify-center text-white font-bold text-xs">
+                    QCC
+                </div>
+                <span class="text-white font-medium">Quality & Competitive College</span>
+            </div>
+            <p class="text-sm">© 2026 QCC. Todos los derechos reservados.</p>
+            <div class="flex space-x-4">
+                <a href="#" class="hover:text-white transition-colors text-sm">Aviso de Privacidad</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

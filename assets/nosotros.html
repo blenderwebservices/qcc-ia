@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros - Quality & Competitive College (QCC)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        },
+                        secondary: '#0f172a'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .bg-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .clip-diagonal {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50 antialiased selection:bg-primary-500 selection:text-white">
+
+    <!-- Navegación -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                    <div class="w-10 h-10 bg-primary-700 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                        QCC
+                    </div>
+                    <span class="font-bold text-xl text-secondary hidden sm:block tracking-tight">Quality & Competitive College</span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="qcc_servicios.html" class="text-gray-600 hover:text-primary-600 font-medium transition-colors">Inicio</a>
+                    <a href="#nosotros" class="text-primary-600 font-bold border-b-2 border-primary-600 pb-1">Nosotros</a>
+                    <a href="qcc_sectores.html" class="text-gray-600 hover:text-primary-600 font-medium transition-colors">Sectores</a>
+                    <a href="qcc_servicios.html#contacto" class="bg-primary-600 hover:bg-primary-700 text-white px-5 py-2.5 rounded-full font-medium transition-all shadow-md transform hover:-translate-y-0.5">Contactar</a>
+                </div>
+                <!-- Menú móvil -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-600 hover:text-primary-600 focus:outline-none p-2">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-secondary to-primary-900 text-white overflow-hidden bg-pattern clip-diagonal pb-32">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-20 pb-20 flex flex-col items-center text-center">
+            <span class="bg-white/10 text-primary-100 border border-white/20 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-6 shadow-sm inline-flex items-center gap-2 backdrop-blur-sm">
+                <i data-lucide="building-2" class="w-4 h-4"></i> Conozca Nuestra Historia
+            </span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight max-w-4xl">
+                Impulsando la <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-cyan-300">Excelencia Organizacional</span> desde 2003
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 max-w-3xl leading-relaxed font-light">
+                Somos Quality & Competitive College, S.C. (QCC). Un Organismo de Certificación líder, enfocado en generar confianza, optimizar procesos de gestión y abrir puertas al mercado global.
+            </p>
+        </div>
+    </section>
+
+    <!-- Stats / Trust Indicators (Superpuestos) -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 -mt-24 mb-20">
+        <div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-gray-100">
+            <div class="text-center px-4">
+                <div class="w-12 h-12 bg-primary-50 text-primary-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="calendar-check" class="w-6 h-6"></i>
+                </div>
+                <h4 class="text-3xl font-bold text-secondary mb-1">2003</h4>
+                <p class="text-gray-500 text-sm font-medium uppercase tracking-wide">Año de Fundación</p>
+            </div>
+            <div class="text-center px-4 pt-6 md:pt-0">
+                <div class="w-12 h-12 bg-primary-50 text-primary-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                </div>
+                <h4 class="text-3xl font-bold text-secondary mb-1">ema & IAF</h4>
+                <p class="text-gray-500 text-sm font-medium uppercase tracking-wide">Reconocimiento Global</p>
+            </div>
+            <div class="text-center px-4 pt-6 md:pt-0">
+                <div class="w-12 h-12 bg-primary-50 text-primary-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="award" class="w-6 h-6"></i>
+                </div>
+                <h4 class="text-3xl font-bold text-secondary mb-1">N° 39/09</h4>
+                <p class="text-gray-500 text-sm font-medium uppercase tracking-wide">Registro Oficial</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiénes Somos -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-primary-600 font-bold tracking-wide uppercase text-sm mb-2">Nuestra Identidad</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-secondary mb-6">Expertos en Evaluación de la Conformidad</h3>
+                    <div class="space-y-4 text-gray-600 text-lg leading-relaxed">
+                        <p>
+                            En <strong>QCC</strong> contamos con amplia experiencia evaluando y certificando Sistemas de Gestión de la Calidad en organizaciones de diversos sectores estratégicos. 
+                        </p>
+                        <p>
+                            Nuestro propósito es provocar procesos de mejora continua reales. No nos limitamos a "entregar un certificado"; trabajamos como un aliado estratégico para optimizar sus sistemas de gestión, asegurando que su organización alcance la excelencia operativa y cumpla con las normativas más exigentes a nivel internacional.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-8 flex items-center gap-6">
+                        <div class="flex -space-x-4">
+                            <div class="w-12 h-12 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-gray-500"><i data-lucide="user" class="w-5 h-5"></i></div>
+                            <div class="w-12 h-12 rounded-full border-2 border-white bg-gray-300 flex items-center justify-center text-gray-600"><i data-lucide="user" class="w-5 h-5"></i></div>
+                            <div class="w-12 h-12 rounded-full border-2 border-white bg-primary-100 flex items-center justify-center text-primary-600"><i data-lucide="users" class="w-5 h-5"></i></div>
+                        </div>
+                        <p class="text-sm font-medium text-secondary">Respaldo por un equipo de auditores <br><span class="text-primary-600">altamente calificados.</span></p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de Acreditación Visual -->
+                <div class="relative">
+                    <div class="absolute inset-0 bg-primary-600 rounded-3xl transform rotate-3 scale-105 opacity-10"></div>
+                    <div class="bg-white p-10 rounded-3xl shadow-lg border border-gray-100 relative">
+                        <h4 class="text-xl font-bold text-secondary mb-6 flex items-center gap-3">
+                            <i data-lucide="check-circle" class="w-6 h-6 text-green-500"></i>
+                            Acreditaciones Oficiales
+                        </h4>
+                        <p class="text-gray-600 mb-8 text-sm">
+                            Nuestra competencia técnica, imparcialidad y rigor están avalados por los máximos órganos rectores de acreditación a nivel nacional e internacional.
+                        </p>
+                        
+                        <div class="space-y-6">
+                            <!-- ema -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-14 h-14 bg-gray-50 border border-gray-200 rounded-xl flex items-center justify-center shrink-0 font-bold text-gray-400">
+                                    ema
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-secondary">Entidad Mexicana de Acreditación</h5>
+                                    <p class="text-sm text-gray-500 mt-1">Acreditación nacional que garantiza la legalidad y validez de nuestros procesos en México.</p>
+                                </div>
+                            </div>
+                            <!-- IAF -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-14 h-14 bg-gray-50 border border-gray-200 rounded-xl flex items-center justify-center shrink-0 font-bold text-primary-700">
+                                    IAF
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-secondary">Foro Mundial de Acreditación</h5>
+                                    <p class="text-sm text-gray-500 mt-1">Reconocimiento internacional (International Accreditation Forum) para certificados con validez global.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Misión y Visión -->
+    <section class="py-20 lg:py-28 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-8">
+                
+                <!-- Misión -->
+                <div class="bg-primary-50 rounded-3xl p-10 lg:p-14 border border-primary-100 relative overflow-hidden group hover:shadow-xl transition-all duration-300">
+                    <div class="absolute top-0 right-0 -mr-10 -mt-10 text-primary-200 opacity-50 group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="target" class="w-48 h-48"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-primary-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-md">
+                            <i data-lucide="flag" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-secondary mb-4">Nuestra Misión</h3>
+                        <p class="text-gray-700 text-lg leading-relaxed">
+                            "Satisfacer las necesidades de las organizaciones en materia de reconocimiento nacional e internacional a través de la certificación en sistemas de gestión bajo normas ISO, de una manera <strong>imparcial, responsable, transparente, confiable y ética.</strong>"
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Visión -->
+                <div class="bg-secondary rounded-3xl p-10 lg:p-14 relative overflow-hidden group hover:shadow-xl transition-all duration-300 text-white">
+                    <div class="absolute top-0 right-0 -mr-10 -mt-10 text-gray-700 opacity-50 group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="eye" class="w-48 h-48"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-white/10 text-primary-400 rounded-2xl flex items-center justify-center mb-8 backdrop-blur-sm border border-white/10">
+                            <i data-lucide="globe-2" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4">Nuestra Visión</h3>
+                        <p class="text-gray-300 text-lg leading-relaxed">
+                            "Ser un organismo de certificación a nivel nacional e internacional que <strong>impulse y engrandezca a nuestro país</strong> en la globalización de sistemas de gestión."
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Valores -->
+    <section class="py-20 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-primary-600 font-bold tracking-wide uppercase text-sm mb-2">ADN Corporativo</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-secondary mb-4">Valores que rigen nuestra conducta</h3>
+                <p class="text-gray-600 text-lg">Como organismo auditor, la rectitud es nuestra principal herramienta de trabajo. Estos principios guían cada una de nuestras evaluaciones.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                
+                <!-- Valor 1 -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center hover:border-primary-300 hover:shadow-md transition-all group">
+                    <div class="w-12 h-12 bg-gray-50 text-gray-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-50 group-hover:text-primary-600 transition-colors">
+                        <i data-lucide="scale" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-secondary">Imparcialidad</h4>
+                </div>
+
+                <!-- Valor 2 -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center hover:border-primary-300 hover:shadow-md transition-all group">
+                    <div class="w-12 h-12 bg-gray-50 text-gray-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-50 group-hover:text-primary-600 transition-colors">
+                        <i data-lucide="clipboard-check" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-secondary">Responsabilidad</h4>
+                </div>
+
+                <!-- Valor 3 -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center hover:border-primary-300 hover:shadow-md transition-all group">
+                    <div class="w-12 h-12 bg-gray-50 text-gray-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-50 group-hover:text-primary-600 transition-colors">
+                        <i data-lucide="search" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-secondary">Transparencia</h4>
+                </div>
+
+                <!-- Valor 4 -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center hover:border-primary-300 hover:shadow-md transition-all group">
+                    <div class="w-12 h-12 bg-gray-50 text-gray-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-50 group-hover:text-primary-600 transition-colors">
+                        <i data-lucide="shield-alert" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-secondary">Confiabilidad</h4>
+                </div>
+
+                <!-- Valor 5 -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 text-center hover:border-primary-300 hover:shadow-md transition-all group col-span-2 md:col-span-1 lg:col-span-1">
+                    <div class="w-12 h-12 bg-gray-50 text-gray-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-50 group-hover:text-primary-600 transition-colors">
+                        <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-secondary">Ética</h4>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Call To Action (Banner) -->
+    <section class="py-20 bg-primary-600 relative overflow-hidden">
+        <!-- Circles Decor -->
+        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 border-4 border-white/10 rounded-full"></div>
+        <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-60 h-60 border-4 border-white/10 rounded-full"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center text-white">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Confíe su certificación a los expertos</h2>
+            <p class="text-primary-100 text-lg mb-10">Únase a las cientos de empresas e instituciones que han elevado su estándar de calidad y competitividad con QCC desde el 2003.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="qcc_sectores.html" class="bg-white text-primary-700 hover:bg-gray-50 px-8 py-3.5 rounded-full font-bold transition-all shadow-lg">
+                    Conocer Sectores Evaluados
+                </a>
+                <a href="qcc_servicios.html#contacto" class="bg-transparent border border-white/40 text-white hover:bg-white/10 px-8 py-3.5 rounded-full font-bold transition-all">
+                    Contactar a un Asesor
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-gray-400 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-primary-600 rounded flex items-center justify-center text-white font-bold text-xs">
+                    QCC
+                </div>
+                <span class="text-white font-medium">Quality & Competitive College</span>
+            </div>
+            <p class="text-sm">© 2026 QCC. Todos los derechos reservados.</p>
+            <div class="flex space-x-4">
+                <a href="#" class="hover:text-white transition-colors text-sm">Aviso de Privacidad</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
