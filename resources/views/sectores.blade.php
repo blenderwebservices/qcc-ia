@@ -81,8 +81,23 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-br from-secondary to-primary-900 text-white overflow-hidden bg-pattern">
-        <div class="absolute inset-0 bg-black/40"></div>
+    <section class="relative text-white overflow-hidden pb-20">
+        <!-- Background Slider -->
+        <div class="absolute inset-0 z-0">
+            <img src="{{ asset('images/sectores/andy-fluet-2eAr5Wst2e0-unsplash.jpg') }}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100 slide-image-sectores" alt="Sectores 1">
+            <img src="{{ asset('images/sectores/aubrey-odom-P6pe2Qr5TmU-unsplash.jpg') }}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 slide-image-sectores" alt="Sectores 2">
+            <img src="{{ asset('images/sectores/chris-curry-CQmnJ2-ODIQ-unsplash.jpg') }}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 slide-image-sectores" alt="Sectores 3">
+            <img src="{{ asset('images/sectores/compagnons-8uA8Fj74Zwo-unsplash.jpg') }}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 slide-image-sectores" alt="Sectores 4">
+            <img src="{{ asset('images/sectores/donald-wu-3xuX6xJz8AM-unsplash.jpg') }}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 slide-image-sectores" alt="Sectores 5">
+            <img src="{{ asset('images/sectores/fionn-grosse-M_4tdtTg8uI-unsplash.jpg') }}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 slide-image-sectores" alt="Sectores 6">
+            <img src="{{ asset('images/sectores/miao-xiang-ZDSlOZrxT3w-unsplash.jpg') }}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 slide-image-sectores" alt="Sectores 7">
+            <img src="{{ asset('images/sectores/yue-wu-fYVNG_eex6Q-unsplash.jpg') }}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 slide-image-sectores" alt="Sectores 8">
+            <img src="{{ asset('images/sectores/zoshua-colah-4J7X9_tejnI-unsplash.jpg') }}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 slide-image-sectores" alt="Sectores 9">
+        </div>
+        <!-- Overlays -->
+        <div class="absolute inset-0 bg-secondary/70 mix-blend-multiply z-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-secondary/90 to-transparent z-10"></div>
+        <div class="absolute inset-0 bg-pattern opacity-30 z-10"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 lg:py-28 flex flex-col items-center text-center">
             <span class="bg-white/10 text-primary-100 border border-white/20 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-6 shadow-sm inline-flex items-center gap-2 backdrop-blur-sm">
                 <i data-lucide="briefcase" class="w-4 h-4"></i> Auditoría Especializada
@@ -436,6 +451,21 @@
     @livewireScripts
     <script>
         lucide.createIcons();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroSlides = document.querySelectorAll('.slide-image-sectores');
+            let currentHeroSlide = 0;
+
+            if (heroSlides.length > 0) {
+                setInterval(() => {
+                    heroSlides[currentHeroSlide].classList.remove('opacity-100');
+                    heroSlides[currentHeroSlide].classList.add('opacity-0');
+                    currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+                    heroSlides[currentHeroSlide].classList.remove('opacity-0');
+                    heroSlides[currentHeroSlide].classList.add('opacity-100');
+                }, 4000);
+            }
+        });
     </script>
 </body>
 </html>

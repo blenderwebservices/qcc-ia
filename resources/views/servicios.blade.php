@@ -78,10 +78,29 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="inicio" class="relative bg-gradient-to-br from-primary-900 to-primary-700 text-white overflow-hidden bg-pattern">
-        <div class="absolute inset-0 bg-black/20"></div>
+    <section id="inicio" class="relative text-white overflow-hidden pb-20">
+        <!-- Background Slider -->
+        <div class="absolute inset-0 z-0">
+            <img src="{{ asset('images/servicios/adeolu-eletu-E7RLgUjjazc-unsplash.jpg') }}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100 slide-image-servicios" alt="Servicios 1">
+            <img src="{{ asset('images/servicios/lewis-keegan-XQaqV5qYcXg-unsplash.jpg') }}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 slide-image-servicios" alt="Servicios 2">
+            <img src="{{ asset('images/servicios/marcel-petzold-A86XYnRUb20-unsplash.jpg') }}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 slide-image-servicios" alt="Servicios 3">
+            <img src="{{ asset('images/servicios/markus-spiske-7PMGUqYQpYc-unsplash.jpg') }}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 slide-image-servicios" alt="Servicios 4">
+            <img src="{{ asset('images/servicios/radission-us-_XeQ8XEWb4Q-unsplash.jpg') }}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 slide-image-servicios" alt="Servicios 5">
+            <img src="{{ asset('images/servicios/signature-pro-wB9iWZKwljw-unsplash.jpg') }}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 slide-image-servicios" alt="Servicios 6">
+            <img src="{{ asset('images/servicios/skytech-aviation-6hWK5wYj7nk-unsplash.jpg') }}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 slide-image-servicios" alt="Servicios 7">
+            <img src="{{ asset('images/servicios/sortter-HgfSImH9ZYw-unsplash.jpg') }}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 slide-image-servicios" alt="Servicios 8">
+            <img src="{{ asset('images/servicios/vitaly-gariev-5txln04Cx7I-unsplash.jpg') }}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 slide-image-servicios" alt="Servicios 9">
+            <img src="{{ asset('images/servicios/vitaly-gariev-7mgkmRY4ZLM-unsplash.jpg') }}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 slide-image-servicios" alt="Servicios 10">
+            <img src="{{ asset('images/servicios/vitaly-gariev-K0aM-ztA76Q-unsplash.jpg') }}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 slide-image-servicios" alt="Servicios 11">
+            <img src="{{ asset('images/servicios/vitaly-gariev-l0E0Y1TdzxE-unsplash.jpg') }}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 slide-image-servicios" alt="Servicios 12">
+            <img src="{{ asset('images/servicios/vitaly-gariev-piULICqeV5Y-unsplash.jpg') }}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 slide-image-servicios" alt="Servicios 13">
+        </div>
+        <!-- Overlays -->
+        <div class="absolute inset-0 bg-secondary/70 mix-blend-multiply z-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-secondary/90 to-transparent z-10"></div>
+        <div class="absolute inset-0 bg-pattern opacity-30 z-10"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-24 lg:py-32 flex flex-col items-center text-center">
-            <span class="bg-primary-500/30 text-primary-100 border border-primary-400/30 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-6 shadow-sm inline-flex items-center gap-2">
+            <span class="bg-white/10 text-primary-100 border border-white/20 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-6 shadow-sm inline-flex items-center gap-2 backdrop-blur-sm">
                 <i data-lucide="award" class="w-4 h-4"></i> Organismo Certificador en Sistemas de Gestión
             </span>
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight max-w-4xl">
@@ -420,6 +439,21 @@
     @livewireScripts
     <script>
         lucide.createIcons();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroSlides = document.querySelectorAll('.slide-image-servicios');
+            let currentHeroSlide = 0;
+
+            if (heroSlides.length > 0) {
+                setInterval(() => {
+                    heroSlides[currentHeroSlide].classList.remove('opacity-100');
+                    heroSlides[currentHeroSlide].classList.add('opacity-0');
+                    currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+                    heroSlides[currentHeroSlide].classList.remove('opacity-0');
+                    heroSlides[currentHeroSlide].classList.add('opacity-100');
+                }, 4000);
+            }
+        });
     </script>
 </body>
 </html>
