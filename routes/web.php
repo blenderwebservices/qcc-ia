@@ -13,5 +13,7 @@ Route::middleware('throttle:5,1')->group(function () {
 });
 
 Route::view('/nosotros', 'nosotros')->name('nosotros');
+Route::view('/sectores', 'sectores')->name('sectores');
+Route::view('/servicios', 'servicios')->name('servicios');
 
 Route::post('/diagnostico/pdf', [\App\Http\Controllers\ReportController::class, 'generatePdf'])->name('diagnostico.pdf');
