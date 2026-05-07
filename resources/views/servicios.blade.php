@@ -104,7 +104,7 @@
                 <i data-lucide="award" class="w-4 h-4"></i> Organismo Certificador en Sistemas de Gestión
             </span>
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight max-w-4xl">
-                Certificación de Calidad para un <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-200">Futuro Competitivo</span>
+                Certificación de Calidad para un <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">Futuro Competitivo</span>
             </h1>
             <p class="text-lg md:text-xl text-primary-100 max-w-2xl mb-10 leading-relaxed font-light">
                 Elevamos los estándares de tu organización con auditorías de alto valor, capacitación experta y certificación oficial (ISO, NOM).

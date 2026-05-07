@@ -116,7 +116,7 @@
                 </div>
 
                 <!-- Imagen/Composición visual derecha -->
-                <div class="hidden lg:flex justify-center relative">
+                <div class="flex justify-center relative mt-12 lg:mt-0">
                     <div class="relative w-full max-w-md">
                         <!-- Tarjeta flotante 1 -->
                         <div class="absolute -left-12 top-10 bg-white text-secondary p-5 rounded-2xl shadow-2xl z-20 animate-[bounce_5s_infinite]">
