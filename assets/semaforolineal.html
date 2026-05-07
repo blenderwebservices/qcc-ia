@@ -1,0 +1,317 @@
+import React, { useState } from 'react';
+import { 
+  CheckCircle2, 
+  XCircle, 
+  ArrowRight, 
+  Target, 
+  ShieldAlert, 
+  FileText, 
+  Users, 
+  BookOpen, 
+  Truck, 
+  Smile, 
+  LineChart, 
+  Search, 
+  Wrench,
+  Award,
+  RotateCcw,
+  BookCheck
+} from 'lucide-react';
+
+// --- DATA DEFINITION ---
+const questions = [
+  { id: 1, text: "¿Tiene definido el alcance de su Sistema de Gestión de la Calidad?", icon: Target },
+  { id: 2, text: "¿Posée objetivos claros y medibles para su SGC y procesos?", icon: LineChart },
+  { id: 3, text: "¿Tiene un proceso definido para la Gestión de los Riesgos en su SGC?", icon: ShieldAlert },
+  { id: 4, text: "¿Realiza la documentación y actualización de la información y procesos de su SGC?", icon: FileText },
+  { id: 5, text: "¿Tiene definido y documentado los roles y responsabilidades de los colaboradores de su organización?", icon: Users },
+  { id: 6, text: "¿Realiza la capacitación a su personal en temas relacionados a sus responsabilidades?", icon: BookOpen },
+  { id: 7, text: "¿Realiza la evaluación de Proveedores?", icon: Truck },
+  { id: 8, text: "¿Realiza la evaluación de Satisfacción del cliente?", icon: Smile },
+  { id: 9, text: "¿Realiza Revisiones por la Dirección?", icon: Search },
+  { id: 10, text: "¿Efectúa Auditorías Internas a intervalos planificados?", icon: FileText },
+  { id: 11, text: "¿Tiene un proceso definido para la identificación, análisis y solución de No Conformidades?", icon: Wrench },
+];
+
+const trainingOptions = [
+  "ISO 9000:2015",
+  "ISO 9001:2015",
+  "LIDERAZGO",
+  "ISO 19011:2018",
+  "ISO 31000:2018",
+  "ISO 31010:2019",
+  "MAPEO DE PROCESO"
+];
+
+// --- MAIN APP COMPONENT ---
+export default function App() {
+  const [started, setStarted] = useState(false);
+  const [currentStep, setCurrentStep] = useState(0);
+  const [answers, setAnswers] = useState({});
+  const [trainings, setTrainings] = useState([]);
+  const [showResults, setShowResults] = useState(false);
+
+  const handleAnswer = (answer) => {
+    setAnswers({ ...answers, [currentStep]: answer });
+    setTimeout(() => {
+      if (currentStep < questions.length - 1) {
+        setCurrentStep(currentStep + 1);
+      } else {
+        setCurrentStep(currentStep + 1); // Move to trainings step
+      }
+    }, 300); // Small delay for UX feeling
+  };
+
+  const handleTrainingToggle = (training) => {
+    if (trainings.includes(training)) {
+      setTrainings(trainings.filter(t => t !== training));
+    } else {
+      setTrainings([...trainings, training]);
+    }
+  };
+
+  const calculateResults = () => {
+    // Each Yes is 1 point. Trainings count as 1 point total if at least one is selected (max 12 pts).
+    let score = Object.values(answers).filter(val => val === true).length;
+    if (trainings.length > 0) {
+      score += 1;
+    }
+
+    let evaluation = {};
+
+    if (score <= 5) {
+      evaluation = {
+        color: "bg-red-50 border-red-500 text-red-900",
+        badge: "bg-red-500",
+        level: "Sistema de Gestión inmaduro",
+        desc: "Bajas mejoras y cambios sin planificación.",
+        certifiable: false,
+        recommendation: "DESTINAR ASESORÍA/CONSULTORIA Y RECURSOS A GRAN ESCALA."
+      };
+    } else if (score <= 8) {
+      evaluation = {
+        color: "bg-orange-50 border-orange-500 text-orange-900",
+        badge: "bg-orange-500",
+        level: "Sistema de Gestión inmaduro (Transición)",
+        desc: "Moderados cambios y mejoras, pero con una planificación básica.",
+        certifiable: false,
+        recommendation: "DESTINAR ASESORÍA/CONSULTORIA Y RECURSOS PARA EL REFORZAMIENTO DE METODOLOGÍAS Y HERRAMIENTAS."
+      };
+    } else if (score <= 10) {
+      evaluation = {
+        color: "bg-yellow-50 border-yellow-500 text-yellow-900",
+        badge: "bg-yellow-500",
+        level: "Sistema de Gestión con madurez transitoria",
+        desc: "Fomentando la toma de decisiones para cambios y mejoras necesarios y constantes.",
+        certifiable: false,
+        recommendation: "DESTINAR RECURSOS PARA EL SEGUIMIENTO Y MEJORA DE LA EFICIENCIA DEL SGC. REALIZAR AUDITORIA DIAGNÓSTICA PARA DETERMINAR NECESIDADES PARA EL LOGRO DE UNA CERTIFICACIÓN."
+      };
+    } else {
+      evaluation = {
+        color: "bg-green-50 border-green-500 text-green-900",
+        badge: "bg-green-500",
+        level: "Sistema de Gestión Maduro",
+        desc: "Presencia de cambios y mejoras estructuradas y planificadas a travez de lapsos de tiempo definidos.",
+        certifiable: true,
+        recommendation: "REALIZAR AUDITORIA DIAGNÓSTICA PARA IDENTIFICAR DESVIACIONES ANTES DE LA AUDITORÍA DE CERTIFICACIÓN."
+      };
+    }
+
+    return { score, ...evaluation };
+  };
+
+  const restart = () => {
+    setStarted(false);
+    setCurrentStep(0);
+    setAnswers({});
+    setTrainings([]);
+    setShowResults(false);
+  };
+
+  // --- VIEWS ---
+
+  if (!started) {
+    return (
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
+        <div className="max-w-2xl w-full bg-white rounded-2xl shadow-xl overflow-hidden">
+          <div className="bg-blue-600 p-8 text-center text-white">
+            <Award className="w-16 h-16 mx-auto mb-4" />
+            <h1 className="text-3xl font-bold mb-2">Evaluación de Preparación SGC</h1>
+            <p className="text-blue-100">Cuestionario inicial para determinar si su organización es candidata a certificación de calidad.</p>
+          </div>
+          <div className="p-8 text-center">
+            <p className="text-gray-600 mb-8 text-lg">
+              Este diagnóstico rápido evalúa la madurez de su Sistema de Gestión de Calidad mediante 12 puntos clave. Al finalizar, recibirá un dictamen y recomendaciones estratégicas.
+            </p>
+            <button 
+              onClick={() => setStarted(true)}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-full shadow-lg transition-transform hover:scale-105 flex items-center mx-auto gap-2"
+            >
+              Comenzar Evaluación <ArrowRight className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (showResults) {
+    const result = calculateResults();
+    return (
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4 py-12">
+        <div className="max-w-3xl w-full">
+          <div className={`bg-white rounded-2xl shadow-xl overflow-hidden border-t-8 ${result.color.split(' ')[1]}`}>
+            <div className="p-8">
+              <div className="text-center mb-8">
+                <h2 className="text-3xl font-bold text-gray-800 mb-2">Resultados del Diagnóstico</h2>
+                <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-slate-100 mb-4 shadow-inner mt-4">
+                  <span className="text-4xl font-black text-slate-700">{result.score}<span className="text-2xl text-slate-400">/12</span></span>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
+                <div className={`p-6 rounded-xl border ${result.color}`}>
+                  <h3 className="font-bold text-lg mb-2 flex items-center gap-2">
+                    <span className={`w-4 h-4 rounded-full ${result.badge} inline-block animate-pulse`}></span>
+                    Nivel de Madurez
+                  </h3>
+                  <p className="font-semibold text-xl mb-1">{result.level}</p>
+                  <p className="opacity-80 text-sm">{result.desc}</p>
+                </div>
+
+                <div className={`p-6 rounded-xl border flex flex-col justify-center items-center text-center ${result.certifiable ? 'bg-green-50 border-green-200 text-green-800' : 'bg-red-50 border-red-200 text-red-800'}`}>
+                   <h3 className="font-bold text-lg mb-2 uppercase tracking-wide opacity-80">Estatus</h3>
+                   {result.certifiable ? (
+                     <>
+                        <CheckCircle2 className="w-12 h-12 mb-2 text-green-600" />
+                        <span className="text-2xl font-black">CERTIFICABLE</span>
+                     </>
+                   ) : (
+                     <>
+                        <XCircle className="w-12 h-12 mb-2 text-red-500" />
+                        <span className="text-2xl font-black">NO CERTIFICABLE</span>
+                     </>
+                   )}
+                </div>
+              </div>
+
+              <div className="bg-slate-100 p-6 rounded-xl mb-8">
+                <h3 className="font-bold text-slate-800 text-lg mb-3 flex items-center gap-2">
+                  <Wrench className="w-5 h-5 text-blue-600" /> Recomendación Estratégica
+                </h3>
+                <p className="text-slate-700 leading-relaxed font-medium">
+                  {result.recommendation}
+                </p>
+              </div>
+
+              <div className="text-center">
+                <button 
+                  onClick={restart}
+                  className="text-blue-600 hover:text-blue-800 font-semibold flex items-center justify-center mx-auto gap-2 py-2 px-4 hover:bg-blue-50 rounded-lg transition-colors"
+                >
+                  <RotateCcw className="w-4 h-4" /> Realizar nueva evaluación
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Questionnaire View
+  const progress = ((currentStep) / (questions.length + 1)) * 100;
+  
+  return (
+    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
+      <div className="max-w-2xl w-full bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col min-h-[500px]">
+        
+        {/* Progress Bar */}
+        <div className="w-full bg-gray-200 h-2">
+          <div 
+            className="bg-blue-600 h-2 transition-all duration-500 ease-out" 
+            style={{ width: `${progress}%` }}
+          ></div>
+        </div>
+
+        <div className="p-8 flex-grow flex flex-col">
+          <div className="mb-8 text-sm font-semibold text-blue-600 uppercase tracking-wider">
+            Pregunta {currentStep + 1} de {questions.length + 1}
+          </div>
+
+          {currentStep < questions.length ? (
+            // Standard Yes/No Questions
+            <div className="flex-grow flex flex-col justify-center">
+              <div className="flex items-center justify-center mb-6">
+                {React.createElement(questions[currentStep].icon, { className: "w-16 h-16 text-slate-300" })}
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-slate-800 text-center mb-10 leading-tight">
+                {questions[currentStep].text}
+              </h2>
+              
+              <div className="grid grid-cols-2 gap-4 mt-auto">
+                <button 
+                  onClick={() => handleAnswer(true)}
+                  className="group flex flex-col items-center justify-center p-6 border-2 border-slate-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition-all focus:outline-none focus:ring-4 focus:ring-green-100"
+                >
+                  <CheckCircle2 className="w-10 h-10 text-slate-400 group-hover:text-green-500 mb-2 transition-colors" />
+                  <span className="text-xl font-bold text-slate-700 group-hover:text-green-700">Sí</span>
+                </button>
+                <button 
+                  onClick={() => handleAnswer(false)}
+                  className="group flex flex-col items-center justify-center p-6 border-2 border-slate-200 rounded-xl hover:border-red-500 hover:bg-red-50 transition-all focus:outline-none focus:ring-4 focus:ring-red-100"
+                >
+                  <XCircle className="w-10 h-10 text-slate-400 group-hover:text-red-500 mb-2 transition-colors" />
+                  <span className="text-xl font-bold text-slate-700 group-hover:text-red-700">No</span>
+                </button>
+              </div>
+            </div>
+          ) : (
+            // Final Step: Trainings (Multiple Selection)
+            <div className="flex-grow flex flex-col">
+               <div className="flex items-center justify-center mb-4">
+                <BookCheck className="w-12 h-12 text-slate-300" />
+              </div>
+              <h2 className="text-2xl font-bold text-slate-800 text-center mb-2">
+                Capacitaciones recientes
+              </h2>
+              <p className="text-center text-slate-500 mb-6">
+                ¿Ha realizado capacitaciones en los últimos 6 meses en alguno de los siguientes temas? (Seleccione todas las que apliquen)
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8 overflow-y-auto max-h-[40vh] p-1">
+                {trainingOptions.map((training, index) => (
+                  <label 
+                    key={index}
+                    className={`flex items-center p-4 border-2 rounded-xl cursor-pointer transition-all ${trainings.includes(training) ? 'border-blue-500 bg-blue-50' : 'border-slate-200 hover:border-blue-300'}`}
+                  >
+                    <div className="relative flex items-center justify-center w-6 h-6 mr-3 border-2 border-slate-300 rounded focus-within:ring-2 focus-within:ring-blue-500">
+                      <input 
+                        type="checkbox" 
+                        className="opacity-0 absolute w-full h-full cursor-pointer"
+                        checked={trainings.includes(training)}
+                        onChange={() => handleTrainingToggle(training)}
+                      />
+                      {trainings.includes(training) && <CheckCircle2 className="w-5 h-5 text-blue-600 absolute pointer-events-none" />}
+                    </div>
+                    <span className={`font-medium ${trainings.includes(training) ? 'text-blue-800' : 'text-slate-700'}`}>
+                      {training}
+                    </span>
+                  </label>
+                ))}
+              </div>
+
+              <button 
+                onClick={() => setShowResults(true)}
+                className="mt-auto w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-xl shadow-md transition-colors text-lg"
+              >
+                Ver Resultados
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
