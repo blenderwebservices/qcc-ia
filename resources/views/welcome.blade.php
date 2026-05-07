@@ -99,7 +99,7 @@
                         Organismo de Certificación Acreditado
                     </div>
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
-                        Certificamos la <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-200">Excelencia</span> de su Organización
+                        Certificamos la <span class="bg-primary-600 text-white px-4 py-1 rounded-lg shadow-xl inline-block mt-2">Excelencia</span> de su Organización
                     </h1>
                     <p class="text-lg md:text-xl text-gray-300 mb-10 leading-relaxed font-light max-w-lg">
                         Validamos sus Sistemas de Gestión con reconocimiento nacional e internacional. Transformamos el cumplimiento normativo en una verdadera ventaja competitiva.

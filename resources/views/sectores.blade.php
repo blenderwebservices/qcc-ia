@@ -103,7 +103,7 @@
                 <i data-lucide="briefcase" class="w-4 h-4"></i> Auditoría Especializada
             </span>
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight max-w-4xl">
-                Soluciones para su <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-200">Sector Específico</span>
+                Soluciones para su <span class="bg-primary-600 text-white px-4 py-1 rounded-lg shadow-xl inline-block mt-2">Sector Específico</span>
             </h1>
             <p class="text-lg md:text-xl text-gray-300 max-w-3xl mb-10 leading-relaxed font-light">
                 Entendemos que cada industria tiene retos únicos. Desarrollamos propuestas de valor y certificaciones ajustadas a las normativas de la administración pública, salud, educación y servicios sociales.

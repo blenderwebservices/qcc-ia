@@ -102,7 +102,7 @@
                 <i data-lucide="building-2" class="w-4 h-4"></i> Conozca Nuestra Historia
             </span>
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight max-w-4xl">
-                Impulsando la <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-200">Excelencia Organizacional</span> desde 2003
+                Impulsando la <span class="bg-primary-600 text-white px-4 py-1 rounded-lg shadow-xl inline-block mt-2">Excelencia Organizacional</span> desde 2003
             </h1>
             <p class="text-lg md:text-xl text-gray-300 max-w-3xl leading-relaxed font-light">
                 Somos Quality & Competitive College, S.C. (QCC). Un Organismo de Certificación líder, enfocado en generar confianza, optimizar procesos de gestión y abrir puertas al mercado global.
