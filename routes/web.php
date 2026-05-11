@@ -7,9 +7,9 @@ Route::get('/', function () {
 });
 
 Route::middleware('throttle:5,1')->group(function () {
-    Route::get('/consulta', [\App\Http\Controllers\CertificateController::class, 'index'])->name('certificates.index');
-    Route::post('/consulta', [\App\Http\Controllers\CertificateController::class, 'search'])->name('certificates.search');
-    Route::post('/consulta/recordar', [\App\Http\Controllers\CertificateController::class, 'forgotPassword'])->name('certificates.forgot-password');
+    Route::get('/verificacion', [\App\Http\Controllers\CertificateController::class, 'index'])->name('certificates.index');
+    Route::post('/verificacion', [\App\Http\Controllers\CertificateController::class, 'search'])->name('certificates.search');
+    Route::post('/verificacion/recordar', [\App\Http\Controllers\CertificateController::class, 'forgotPassword'])->name('certificates.forgot-password');
 });
 
 Route::view('/nosotros', 'nosotros')->name('nosotros');

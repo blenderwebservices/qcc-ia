@@ -67,6 +67,7 @@
                     <a href="{{ route('nosotros') }}" class="{{ request()->routeIs('nosotros') || request()->is('nosotros') ? 'text-primary-600 font-bold border-b-2 border-primary-600 pb-1' : 'text-gray-600 hover:text-primary-600 font-medium transition-colors' }}">Nosotros</a>
                     <a href="/sectores" class="{{ request()->is('sectores') ? 'text-primary-600 font-bold border-b-2 border-primary-600 pb-1' : 'text-gray-600 hover:text-primary-600 font-medium transition-colors' }}">Sectores</a>
                     <a href="/servicios" class="{{ request()->is('servicios') ? 'text-primary-600 font-bold border-b-2 border-primary-600 pb-1' : 'text-gray-600 hover:text-primary-600 font-medium transition-colors' }}">Servicios</a>
+                    <a href="{{ route('certificates.index') }}" class="{{ request()->routeIs('certificates.index') ? 'text-primary-600 font-bold border-b-2 border-primary-600 pb-1' : 'text-gray-600 hover:text-primary-600 font-medium transition-colors' }}">Verificación</a>
                     <a href="javascript:void(0)" @click="$dispatch('open-evaluation')" class="bg-primary-600 hover:bg-primary-700 text-white px-5 py-2.5 rounded-full font-medium transition-all shadow-md transform hover:-translate-y-0.5">Evaluación para tu Certificación</a>
                 </div>
                 <!-- Menú móvil -->

@@ -6,12 +6,13 @@ use Laravel\Ai\Messages\Message;
 use Illuminate\Support\Str;
 
 new class extends Component {
-    public $isOpen = false;
+    public $chatIsOpen = false;
     public $message = '';
     public $messages = [];
 
     public function mount()
     {
+        $this->chatIsOpen = false;
         $this->messages[] = [
             'role' => 'assistant',
             'content' => '¡Hola! Soy el asistente virtual de Quality & Competitive College (Q&CC). ¿En qué puedo ayudarte hoy?',
@@ -21,8 +22,8 @@ new class extends Component {
 
     public function toggleChat()
     {
-        $this->isOpen = !$this->isOpen;
-        if ($this->isOpen) {
+        $this->chatIsOpen = !$this->chatIsOpen;
+        if ($this->chatIsOpen) {
             $this->dispatch('chat-opened');
         }
     }
@@ -70,7 +71,7 @@ new class extends Component {
 
 ?>
 
-<div class="fixed bottom-6 right-6 z-[100] flex flex-col items-end" x-data="{ open: @entangle('isOpen') }">
+<div class="fixed bottom-6 right-6 z-[100] flex flex-col items-end" x-data="{ open: @entangle('chatIsOpen') }">
     <!-- KaTeX for math rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>

@@ -1,87 +1,160 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificado Válido - {{ $certificate->roc }}</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-    </style>
+    <title>Certificado Válido | {{ $certificate->roc }}</title>
+        @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @endif
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#FCFCF5',
+                            100: '#F5EEDC',
+                            200: '#EADDBC',
+                            300: '#DCC395',
+                            400: '#CBA565',
+                            500: '#C3A54D',
+                            600: '#C3A54D', // Gold
+                            700: '#987F3B', // Darker gold for hover
+                            800: '#816C32',
+                            900: '#624C1D', // Dark brown
+                        },
+                        secondary: '#362a10', // Very dark brown
+                        gray: {
+                            50: '#FCFCF5', // Cream
+                            100: '#F5F5F0',
+                            200: '#EBEBE6',
+                            300: '#D6D6D0',
+                            400: '#B8B8B2',
+                            500: '#96816E', // Taupe
+                            600: '#7A6858',
+                            700: '#5C4E42',
+                            800: '#624C1D', // Dark brown for text
+                            900: '#362A10',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="bg-slate-50 min-h-screen text-slate-800 p-6 md:p-12">
-    
-    <div class="max-w-4xl mx-auto">
-        <a href="{{ route('certificates.index') }}" class="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-800 mb-6 transition-colors">
-            &larr; Volver a consultar
-        </a>
+<body class="font-sans text-gray-800 bg-gray-50 antialiased selection:bg-primary-500 selection:text-white">
 
-        <!-- Certificate Card -->
-        <div class="bg-white rounded-3xl shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100 overflow-hidden relative">
-            
-            <!-- Header Decorative Gradient -->
-            <div class="h-4 w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-400"></div>
-
-            <div class="p-8 md:p-12">
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-100 pb-8 mb-8">
-                    <div>
-                        <h2 class="text-sm font-bold tracking-widest text-slate-400 uppercase mb-1">Certificado Oficial QCC</h2>
-                        <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">{{ $certificate->roc }}</h1>
-                    </div>
-                    <div class="mt-4 md:mt-0">
-                        @if(strtolower($certificate->status) === 'vigente')
-                            <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-emerald-50 text-emerald-600 border border-emerald-200 shadow-sm">
-                                <span class="w-2 h-2 rounded-full bg-emerald-500 mr-2 animate-pulse"></span>
-                                Vigente
-                            </span>
-                        @else
-                            <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-red-50 text-red-600 border border-red-200 shadow-sm">
-                                <span class="w-2 h-2 rounded-full bg-red-500 mr-2"></span>
-                                {{ $certificate->status }}
-                            </span>
-                        @endif
-                    </div>
+    <!-- Navegación Simplificada -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-[120px]">
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.location='/'">
+                    <img src="{{ asset('images/logo.webp') }}" alt="QCC Logo" style="height: 100px;">
                 </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="/" class="text-gray-600 hover:text-primary-600 font-medium transition-colors">Home</a>
+                    <a href="{{ route('certificates.index') }}" class="text-primary-600 font-bold border-b-2 border-primary-600 pb-1">Verificación</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 pl-2">
-                    <div class="space-y-8">
-                        <div>
-                            <p class="text-sm font-medium text-slate-500 mb-1">Organización</p>
-                            <p class="text-xl font-bold text-slate-800">{{ $certificate->organization }}</p>
+    <main class="min-h-[70vh] py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+            <a href="{{ route('certificates.index') }}" class="inline-flex items-center gap-2 text-primary-600 font-bold hover:text-primary-700 transition-colors mb-8 group">
+                <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
+                Nueva Consulta
+            </a>
+
+            <!-- Certificate Result Card -->
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 relative">
+                <!-- Status Banner -->
+                @if(strtolower($certificate->status) === 'vigente')
+                    <div class="bg-green-500 text-white px-6 py-3 flex items-center justify-between">
+                        <div class="flex items-center gap-2 font-bold">
+                            <i data-lucide="check-circle" class="w-5 h-5"></i>
+                            CERTIFICADO VIGENTE
                         </div>
-                        
+                        <div class="text-xs opacity-80 uppercase tracking-widest font-bold">Verificado por QCC</div>
+                    </div>
+                @else
+                    <div class="bg-red-500 text-white px-6 py-3 flex items-center justify-between">
+                        <div class="flex items-center gap-2 font-bold">
+                            <i data-lucide="alert-triangle" class="w-5 h-5"></i>
+                            ESTATUS: {{ strtoupper($certificate->status) }}
+                        </div>
+                        <div class="text-xs opacity-80 uppercase tracking-widest font-bold">Verificado por QCC</div>
+                    </div>
+                @endif
+
+                <div class="p-8 md:p-12">
+                    <div class="flex flex-col md:flex-row justify-between items-start mb-10 pb-10 border-b border-gray-100 gap-6">
                         <div>
-                            <p class="text-sm font-medium text-slate-500 mb-1">Norma de Referencia</p>
-                            <p class="text-lg font-medium text-indigo-700 bg-indigo-50 px-3 py-1.5 rounded-lg inline-block border border-indigo-100">
-                                {{ $certificate->reference_standard }}
+                            <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Identificador ROC</p>
+                            <h2 class="text-3xl md:text-4xl font-extrabold text-secondary">{{ $certificate->roc }}</h2>
+                        </div>
+                        <div class="text-right hidden md:block">
+                            <img src="{{ asset('images/logo.webp') }}" alt="QCC" class="h-16 opacity-20 grayscale">
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-x-12 gap-y-10">
+                        <div class="space-y-6">
+                            <div>
+                                <p class="text-xs font-bold text-primary-600 uppercase tracking-widest mb-2">Organización</p>
+                                <p class="text-xl font-bold text-secondary leading-tight">{{ $certificate->organization }}</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-primary-600 uppercase tracking-widest mb-2">Norma de Referencia</p>
+                                <p class="inline-block px-4 py-1.5 bg-primary-50 text-primary-700 rounded-lg font-bold border border-primary-100">
+                                    {{ $certificate->reference_standard }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div>
+                                <p class="text-xs font-bold text-primary-600 uppercase tracking-widest mb-2">Sectores</p>
+                                <p class="text-lg text-gray-700 font-medium">{{ $certificate->sectors }}</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-primary-600 uppercase tracking-widest mb-2">Fecha de Validación</p>
+                                <div class="flex items-center gap-2 text-lg text-gray-700 font-medium">
+                                    <i data-lucide="calendar" class="w-5 h-5 text-gray-400"></i>
+                                    {{ now()->format('d / m / Y') }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footnote -->
+                    <div class="mt-12 pt-8 border-t border-gray-100">
+                        <div class="bg-gray-50 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4">
+                            <p class="text-sm text-gray-500 max-w-md italic">
+                                La información mostrada corresponde a los registros oficiales de Quality & Competitive College. Para cualquier duda, contáctenos en quality@qcc.com.mx
                             </p>
+                            <div class="flex items-center gap-2 font-black text-gray-200 text-3xl tracking-tighter select-none">
+                                QCC <span class="text-primary-500/20 text-4xl">VALID</span>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="space-y-8">
-                        <div>
-                            <p class="text-sm font-medium text-slate-500 mb-1">Sectores</p>
-                            <p class="text-lg text-slate-700 font-medium">{{ $certificate->sectors }}</p>
-                        </div>
-
-                        <div>
-                            <p class="text-sm font-medium text-slate-500 mb-1">Fecha de Consulta</p>
-                            <p class="text-lg text-slate-700 font-medium">{{ now()->format('d / m / Y') }}</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mt-12 bg-slate-50 rounded-2xl p-6 border border-slate-100 flex items-center justify-between">
-                    <div class="text-sm text-slate-500">
-                        Este documento electrónico valida la situación actual del certificado en nuestra base de datos.
-                    </div>
-                    <div class="flex-shrink-0 opacity-50 font-bold text-slate-300 text-2xl tracking-tighter">
-                        QCC VERIFIED
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
+
+    <!-- Footer Simple -->
+    <footer class="bg-secondary text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm">© 2026 QCC México. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
