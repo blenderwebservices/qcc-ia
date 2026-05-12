@@ -149,12 +149,26 @@
     <!-- Footer Simple -->
     <footer class="bg-secondary text-gray-400 py-12 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-sm">© 2026 QCC México. Todos los derechos reservados.</p>
+            <p class="text-sm mb-4">© 2026 QCC México. Todos los derechos reservados.</p>
+            <div class="flex justify-center space-x-4 text-xs mb-4">
+                <a href="javascript:void(0)" @click="$dispatch('open-principios')" class="hover:text-white transition-colors">Principios</a>
+                <a href="javascript:void(0)" @click="$dispatch('open-politica')" class="hover:text-white transition-colors">Política de Gestión</a>
+                <a href="javascript:void(0)" @click="$dispatch('open-privacy')" class="hover:text-white transition-colors">Aviso de Privacidad</a>
+            </div>
+            <div class="flex justify-center space-x-4 text-gray-500">
+                @if($settings?->facebook_url) <a href="{{ $settings->facebook_url }}" target="_blank" class="hover:text-white transition-colors"><i data-lucide="facebook" class="w-4 h-4"></i></a> @endif
+                @if($settings?->instagram_url) <a href="{{ $settings->instagram_url }}" target="_blank" class="hover:text-white transition-colors"><i data-lucide="instagram" class="w-4 h-4"></i></a> @endif
+                @if($settings?->linkedin_url) <a href="{{ $settings->linkedin_url }}" target="_blank" class="hover:text-white transition-colors"><i data-lucide="linkedin" class="w-4 h-4"></i></a> @endif
+            </div>
         </div>
     </footer>
 
     <script>
         lucide.createIcons();
     </script>
+    @include('evaluation-modal')
+    @include('politica-gestion-modal')
+    @include('principios-modal')
+    @include('aviso-privacidad-modal')
 </body>
 </html>

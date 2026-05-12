@@ -158,7 +158,7 @@
                 
                 <!-- Sector 1: Administración Pública -->
                 <div class="bg-white rounded-2xl p-8 border border-gray-100 card-hover-effect transition-all duration-300 flex flex-col h-full relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('{{ asset('images/sectorAdministracionPublica/javad-esmaeili-tEzlKEPCxlA-unsplash.jpg') }}');"></div>
+                    <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('{{ $settings?->public_admin_image ? asset('storage/' . $settings->public_admin_image) : asset('images/sectorAdministracionPublica/javad-esmaeili-tEzlKEPCxlA-unsplash.jpg') }}');"></div>
                     <div class="absolute inset-0 bg-white/80 z-0 group-hover:bg-white/60 transition-colors duration-300"></div>
                     <div class="absolute top-0 right-0 w-32 h-32 bg-primary-50/50 rounded-bl-full z-0 group-hover:scale-110 transition-transform"></div>
                     <div class="flex justify-between items-start mb-6 relative z-10">
@@ -194,7 +194,7 @@
 
                 <!-- Sector 2: Salud y Asistencia Social -->
                 <div class="bg-white rounded-2xl p-8 border border-gray-100 card-hover-effect transition-all duration-300 flex flex-col h-full relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('{{ asset('images/sectorSaludAsistenciaSocial/etactics-inc-KLgvBN32d_U-unsplash.jpg') }}');"></div>
+                    <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('{{ $settings?->health_image ? asset('storage/' . $settings->health_image) : asset('images/sectorSaludAsistenciaSocial/etactics-inc-KLgvBN32d_U-unsplash.jpg') }}');"></div>
                     <div class="absolute inset-0 bg-white/80 z-0 group-hover:bg-white/60 transition-colors duration-300"></div>
                     <div class="absolute top-0 right-0 w-32 h-32 bg-rose-50/50 rounded-bl-full z-0 group-hover:scale-110 transition-transform"></div>
                     <div class="flex justify-between items-start mb-6 relative z-10">
@@ -230,7 +230,7 @@
 
                 <!-- Sector 3: Educación -->
                 <div class="bg-white rounded-2xl p-8 border border-gray-100 card-hover-effect transition-all duration-300 flex flex-col h-full relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('{{ asset('images/sectorEducativo/dmitrii-e-qT4pYH2uYx4-unsplash.jpg') }}');"></div>
+                    <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('{{ $settings?->education_image ? asset('storage/' . $settings->education_image) : asset('images/sectorEducativo/dmitrii-e-qT4pYH2uYx4-unsplash.jpg') }}');"></div>
                     <div class="absolute inset-0 bg-white/80 z-0 group-hover:bg-white/60 transition-colors duration-300"></div>
                     <div class="absolute top-0 right-0 w-32 h-32 bg-amber-50/50 rounded-bl-full z-0 group-hover:scale-110 transition-transform"></div>
                     <div class="flex justify-between items-start mb-6 relative z-10">
@@ -265,7 +265,7 @@
 
                 <!-- Sector 4: Servicios Sociales y Sostenibilidad -->
                 <div class="bg-white rounded-2xl p-8 border border-gray-100 card-hover-effect transition-all duration-300 flex flex-col h-full relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('{{ asset('images/sectorServiciosSociales/daniele-colucci-A39jivOBEio-unsplash.jpg') }}');"></div>
+                    <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('{{ $settings?->social_services_image ? asset('storage/' . $settings->social_services_image) : asset('images/sectorServiciosSociales/daniele-colucci-A39jivOBEio-unsplash.jpg') }}');"></div>
                     <div class="absolute inset-0 bg-white/80 z-0 group-hover:bg-white/60 transition-colors duration-300"></div>
                     <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50/50 rounded-bl-full z-0 group-hover:scale-110 transition-transform"></div>
                     <div class="flex justify-between items-start mb-6 relative z-10">
@@ -450,8 +450,15 @@
             <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
                 <p>© 2026 Quality & Competitive College, S.C. Todos los derechos reservados.</p>
                 <div class="flex space-x-4">
-                    <a href="#" class="hover:text-white transition-colors">Aviso de Privacidad</a>
+                    <a href="javascript:void(0)" @click="$dispatch('open-principios')" class="hover:text-white transition-colors">Principios</a>
+                    <a href="javascript:void(0)" @click="$dispatch('open-politica')" class="hover:text-white transition-colors">Política de Gestión</a>
+                    <a href="javascript:void(0)" @click="$dispatch('open-privacy')" class="hover:text-white transition-colors">Aviso de Privacidad</a>
                     <a href="#" class="hover:text-white transition-colors">Términos de Servicio</a>
+                </div>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    @if($settings?->facebook_url) <a href="{{ $settings->facebook_url }}" target="_blank" class="hover:text-white transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a> @endif
+                    @if($settings?->instagram_url) <a href="{{ $settings->instagram_url }}" target="_blank" class="hover:text-white transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a> @endif
+                    @if($settings?->linkedin_url) <a href="{{ $settings->linkedin_url }}" target="_blank" class="hover:text-white transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a> @endif
                 </div>
             </div>
         </div>
@@ -478,5 +485,8 @@
         });
     </script>
         @include('evaluation-modal')
+        @include('politica-gestion-modal')
+        @include('principios-modal')
+        @include('aviso-privacidad-modal')
 </body>
 </html>

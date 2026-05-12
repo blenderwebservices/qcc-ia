@@ -258,8 +258,15 @@
             <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
                 <p>© 2026 QCC. Todos los derechos reservados.</p>
                 <div class="flex space-x-4">
-                    <a href="#" class="hover:text-white transition-colors">Aviso de Privacidad</a>
+                    <a href="javascript:void(0)" @click="$dispatch('open-principios')" class="hover:text-white transition-colors">Principios</a>
+                    <a href="javascript:void(0)" @click="$dispatch('open-politica')" class="hover:text-white transition-colors">Política de Gestión</a>
+                    <a href="javascript:void(0)" @click="$dispatch('open-privacy')" class="hover:text-white transition-colors">Aviso de Privacidad</a>
                     <a href="#" class="hover:text-white transition-colors">Términos y Condiciones</a>
+                </div>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    @if($settings?->facebook_url) <a href="{{ $settings->facebook_url }}" target="_blank" class="hover:text-gray-400 transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a> @endif
+                    @if($settings?->instagram_url) <a href="{{ $settings->instagram_url }}" target="_blank" class="hover:text-gray-400 transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a> @endif
+                    @if($settings?->linkedin_url) <a href="{{ $settings->linkedin_url }}" target="_blank" class="hover:text-gray-400 transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a> @endif
                 </div>
             </div>
         </div>
@@ -275,5 +282,8 @@
         });
     </script>
     @include('evaluation-modal')
+    @include('politica-gestion-modal')
+    @include('principios-modal')
+    @include('aviso-privacidad-modal')
 </body>
 </html>

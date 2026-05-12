@@ -24,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
         }
 
         try {
+            if (\Illuminate\Support\Facades\Schema::hasTable('settings')) {
+                view()->share('settings', \App\Models\Setting::first());
+            }
+
             if (\Illuminate\Support\Facades\Schema::hasTable('ai_providers')) {
                 $defaultProvider = \App\Models\AiProvider::with(['vendor', 'aiModel'])
                     ->where('is_default', '=', true)
