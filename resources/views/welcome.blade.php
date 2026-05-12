@@ -369,6 +369,7 @@
                         <li><a href="{{ route('nosotros') }}" class="hover:text-primary-400 transition-colors">Nosotros</a></li>
                         <li><a href="/servicios" class="hover:text-primary-400 transition-colors">Servicios</a></li>
                         <li><a href="/sectores" class="hover:text-primary-400 transition-colors">Sectores y Cotización</a></li>
+                        <li><a href="/admin" class="hover:text-primary-400 transition-colors">Dashboard (Admin)</a></li>
                     </ul>
                 </div>
                 <div>
