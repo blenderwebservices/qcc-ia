@@ -16,5 +16,6 @@ class Setting extends Model
         'health_image',
         'education_image',
         'social_services_image',
+        'other_services_image',
     ];
 }

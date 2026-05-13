@@ -154,11 +154,11 @@
                 <p class="text-gray-600 text-lg">Conocemos a fondo los requisitos legales, técnicos y operativos de los sectores más críticos, asegurando auditorías de valor, no solo de cumplimiento.</p>
             </div>
 
-            <div class="grid lg:grid-cols-2 gap-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
                 <!-- Sector 1: Administración Pública -->
                 <div class="bg-white rounded-2xl p-8 border border-gray-100 card-hover-effect transition-all duration-300 flex flex-col h-full relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('{{ $settings?->public_admin_image ? asset('storage/' . $settings->public_admin_image) : asset('images/sectorAdministracionPublica/javad-esmaeili-tEzlKEPCxlA-unsplash.jpg') }}');"></div>
+                    <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('{{ $settings?->public_admin_image ? (Str::startsWith($settings->public_admin_image, ['http', 'https']) ? $settings->public_admin_image : asset($settings->public_admin_image)) : asset('images/sectorAdministracionPublica/javad-esmaeili-tEzlKEPCxlA-unsplash.jpg') }}');"></div>
                     <div class="absolute inset-0 bg-white/80 z-0 group-hover:bg-white/60 transition-colors duration-300"></div>
                     <div class="absolute top-0 right-0 w-32 h-32 bg-primary-50/50 rounded-bl-full z-0 group-hover:scale-110 transition-transform"></div>
                     <div class="flex justify-between items-start mb-6 relative z-10">
@@ -194,7 +194,7 @@
 
                 <!-- Sector 2: Salud y Asistencia Social -->
                 <div class="bg-white rounded-2xl p-8 border border-gray-100 card-hover-effect transition-all duration-300 flex flex-col h-full relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('{{ $settings?->health_image ? asset('storage/' . $settings->health_image) : asset('images/sectorSaludAsistenciaSocial/etactics-inc-KLgvBN32d_U-unsplash.jpg') }}');"></div>
+                    <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('{{ $settings?->health_image ? (Str::startsWith($settings->health_image, ['http', 'https']) ? $settings->health_image : asset($settings->health_image)) : asset('images/sectorSaludAsistenciaSocial/etactics-inc-KLgvBN32d_U-unsplash.jpg') }}');"></div>
                     <div class="absolute inset-0 bg-white/80 z-0 group-hover:bg-white/60 transition-colors duration-300"></div>
                     <div class="absolute top-0 right-0 w-32 h-32 bg-rose-50/50 rounded-bl-full z-0 group-hover:scale-110 transition-transform"></div>
                     <div class="flex justify-between items-start mb-6 relative z-10">
@@ -230,7 +230,7 @@
 
                 <!-- Sector 3: Educación -->
                 <div class="bg-white rounded-2xl p-8 border border-gray-100 card-hover-effect transition-all duration-300 flex flex-col h-full relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('{{ $settings?->education_image ? asset('storage/' . $settings->education_image) : asset('images/sectorEducativo/dmitrii-e-qT4pYH2uYx4-unsplash.jpg') }}');"></div>
+                    <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('{{ $settings?->education_image ? (Str::startsWith($settings->education_image, ['http', 'https']) ? $settings->education_image : asset($settings->education_image)) : asset('images/sectorEducativo/dmitrii-e-qT4pYH2uYx4-unsplash.jpg') }}');"></div>
                     <div class="absolute inset-0 bg-white/80 z-0 group-hover:bg-white/60 transition-colors duration-300"></div>
                     <div class="absolute top-0 right-0 w-32 h-32 bg-amber-50/50 rounded-bl-full z-0 group-hover:scale-110 transition-transform"></div>
                     <div class="flex justify-between items-start mb-6 relative z-10">
@@ -265,7 +265,7 @@
 
                 <!-- Sector 4: Servicios Sociales y Sostenibilidad -->
                 <div class="bg-white rounded-2xl p-8 border border-gray-100 card-hover-effect transition-all duration-300 flex flex-col h-full relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('{{ $settings?->social_services_image ? asset('storage/' . $settings->social_services_image) : asset('images/sectorServiciosSociales/daniele-colucci-A39jivOBEio-unsplash.jpg') }}');"></div>
+                    <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('{{ $settings?->social_services_image ? (Str::startsWith($settings->social_services_image, ['http', 'https']) ? $settings->social_services_image : asset($settings->social_services_image)) : asset('images/sectorServiciosSociales/daniele-colucci-A39jivOBEio-unsplash.jpg') }}');"></div>
                     <div class="absolute inset-0 bg-white/80 z-0 group-hover:bg-white/60 transition-colors duration-300"></div>
                     <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50/50 rounded-bl-full z-0 group-hover:scale-110 transition-transform"></div>
                     <div class="flex justify-between items-start mb-6 relative z-10">
@@ -295,6 +295,41 @@
                             <i data-lucide="target" class="w-4 h-4"></i> Finalidad
                         </strong>
                         <p class="text-sm text-gray-800 font-medium">Certificamos procesos que garantizan la sostenibilidad, seguridad y calidad en el servicio, impactando directamente en el bienestar comunitario y medio ambiente.</p>
+                    </div>
+                </div>
+                <!-- Sector 5: Otros Servicios -->
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 card-hover-effect transition-all duration-300 flex flex-col h-full relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('{{ $settings?->other_services_image ? (Str::startsWith($settings->other_services_image, ['http', 'https']) ? $settings->other_services_image : asset($settings->other_services_image)) : asset('images/sectorOtrosServicios/business-meeting.jpg') }}');"></div>
+                    <div class="absolute inset-0 bg-white/80 z-0 group-hover:bg-white/60 transition-colors duration-300"></div>
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-50/50 rounded-bl-full z-0 group-hover:scale-110 transition-transform"></div>
+                    <div class="flex justify-between items-start mb-6 relative z-10">
+                        <div class="w-14 h-14 bg-indigo-100 text-indigo-700 rounded-xl flex items-center justify-center">
+                            <i data-lucide="briefcase" class="w-7 h-7"></i>
+                        </div>
+                        <div class="flex gap-2 flex-wrap justify-end max-w-[50%]">
+                            <span class="bg-white/80 backdrop-blur text-gray-800 text-xs font-bold px-2.5 py-1 rounded mb-1">IAF: 35</span>
+                            <span class="bg-white/80 backdrop-blur text-gray-800 text-xs font-bold px-2.5 py-1 rounded mb-1">NACE: M/70, 73, 74, 78, 80, 81, 82</span>
+                        </div>
+                    </div>
+                    <h4 class="text-2xl font-bold text-secondary mb-2 relative z-10">Otros Servicios</h4>
+                    <p class="text-indigo-700 text-sm font-medium mb-6 relative z-10">Una maravillosa colaboración desde 2014</p>
+                    
+                    <div class="space-y-4 flex-grow text-gray-800 font-medium text-sm leading-relaxed relative z-10">
+                        <div>
+                            <strong class="text-secondary block mb-1 font-extrabold">¿Qué comprende?</strong>
+                            Abarca un conjunto estratégico de actividades profesionales y de soporte empresarial que contribuyen al funcionamiento eficiente, legal y operativo de las organizaciones.
+                        </div>
+                        <div>
+                            <strong class="text-secondary block mb-1 font-extrabold">¿Qué incluye?</strong>
+                            Servicios jurídicos, contables, consultoría en gestión, mercadeo, estudios de mercado, publicidad, traducción, recursos humanos, seguridad privada, mantenimiento y jardinería.
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 pt-5 border-t border-gray-300/50 relative z-10">
+                        <strong class="text-indigo-700 flex items-center gap-2 mb-2 font-extrabold">
+                            <i data-lucide="target" class="w-4 h-4"></i> Finalidad
+                        </strong>
+                        <p class="text-sm text-gray-800 font-medium">Fortalecer su competitividad y sostenibilidad en las empresas de todos los sectores económicos a través de la calidad y conformidad normativa.</p>
                     </div>
                 </div>
 

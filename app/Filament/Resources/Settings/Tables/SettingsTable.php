@@ -4,7 +4,7 @@ namespace App\Filament\Resources\Settings\Tables;
 
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Filament\Tables\Actions\EditAction;
+use Filament\Actions\EditAction;
 
 class SettingsTable
 {
@@ -18,7 +18,7 @@ class SettingsTable
                 TextColumn::make('email_1')
                     ->label('Email principal'),
             ])
-            ->actions([
+            ->recordActions([
                 EditAction::make(),
             ]);
     }
