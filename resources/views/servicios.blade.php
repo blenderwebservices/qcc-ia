@@ -49,6 +49,20 @@
         .bg-pattern {
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
+
+        @keyframes pulse-opacity {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+        .animate-pulse-opacity {
+            animation: pulse-opacity 4s ease-in-out infinite;
+            display: inline-block;
+            background-image: linear-gradient(to right, #facc15, #ca8a04);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
     </style>
 </head>
 <body x-data class="font-sans text-gray-800 bg-gray-50 antialiased selection:bg-primary-500 selection:text-white">
@@ -105,7 +119,7 @@
                 <i data-lucide="award" class="w-4 h-4"></i> Organismo Certificador en Sistemas de Gestión
             </span>
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight max-w-4xl">
-                Certificación de Calidad para un <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">Futuro Competitivo</span>
+                Certificación de Calidad para un <span class="animate-pulse-opacity">Futuro Competitivo</span>
             </h1>
             <p class="text-lg md:text-xl text-primary-100 max-w-2xl mb-10 leading-relaxed font-light">
                 Elevamos los estándares de tu organización con auditorías de alto valor, capacitación experta y certificación oficial (ISO, NOM).
