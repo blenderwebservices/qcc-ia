@@ -478,7 +478,7 @@
                         <li>Holbein 159, Noche Buena</li>
                         <li>03720, CDMX, México.</li>
                         <li class="pt-2"><a href="mailto:quality@qcc.com.mx" class="hover:text-primary-400 transition-colors">quality@qcc.com.mx</a></li>
-                        <li><a href="tel:+525581062827" class="hover:text-primary-400 transition-colors">+52 5581-06-2827</a></li>
+                        <li><a href="tel:+525515180250" class="hover:text-primary-400 transition-colors">+52 55 1518 0250</a></li>
                     </ul>
                 </div>
             </div>

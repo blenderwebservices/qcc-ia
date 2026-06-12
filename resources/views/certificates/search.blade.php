@@ -191,7 +191,7 @@
                         </li>
                         <li class="flex items-center gap-2">
                             <i data-lucide="phone" class="w-4 h-4 shrink-0"></i>
-                            +52 5581-06-2827
+                            +52 55 1518 0250
                         </li>
                         <li class="flex items-center gap-2">
                             <i data-lucide="mail" class="w-4 h-4 shrink-0"></i>
