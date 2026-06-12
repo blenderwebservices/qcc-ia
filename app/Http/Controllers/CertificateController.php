@@ -18,11 +18,15 @@ class CertificateController extends Controller
             'roc' => 'required|string',
         ]);
 
-        $certificate = Certificate::where('roc', $request->roc)->first();
+        $query = $request->roc;
+
+        $certificate = Certificate::where('roc', 'like', "%{$query}%")
+            ->orWhere('organization', 'like', "%{$query}%")
+            ->first();
 
         if (!$certificate) {
             return back()
-                ->withErrors(['error' => 'Identificador ROC incorrecto o no registrado.'])
+                ->withErrors(['error' => 'No se encontró ningún certificado con el identificador o nombre ingresado.'])
                 ->withInput();
         }
 

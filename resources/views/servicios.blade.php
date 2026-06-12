@@ -377,30 +377,30 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Nombre *</label>
-                                <input type="text" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all">
+                                <input type="text" id="contact_name" name="name" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Empresa</label>
-                                <input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all">
+                                <input type="text" id="contact_company" name="company" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all">
                             </div>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Correo electrónico *</label>
-                                <input type="email" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all">
+                                <input type="email" id="contact_email" name="email" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
-                                <input type="tel" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all">
+                                <input type="tel" id="contact_phone" name="phone" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all">
                             </div>
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Asunto *</label>
-                            <input type="text" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all">
+                            <input type="text" id="contact_subject" name="subject" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Pregunta / Mensaje *</label>
-                            <textarea required rows="4" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all resize-none"></textarea>
+                            <textarea id="contact_message" name="message" required rows="4" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all resize-none"></textarea>
                         </div>
                         <button type="submit" class="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-6 rounded-lg transition-colors shadow-md">
                             Enviar Solicitud
@@ -475,6 +475,24 @@
                     heroSlides[currentHeroSlide].classList.remove('opacity-0');
                     heroSlides[currentHeroSlide].classList.add('opacity-100');
                 }, 4000);
+            }
+
+            // Autofill contact form from URL params
+            const urlParams = new URLSearchParams(window.location.search);
+            const subject = urlParams.get('subject');
+            const message = urlParams.get('message');
+
+            if (subject) {
+                const subjectInput = document.getElementById('contact_subject');
+                if (subjectInput) {
+                    subjectInput.value = subject;
+                }
+            }
+            if (message) {
+                const messageInput = document.getElementById('contact_message');
+                if (messageInput) {
+                    messageInput.value = message;
+                }
             }
         });
     </script>

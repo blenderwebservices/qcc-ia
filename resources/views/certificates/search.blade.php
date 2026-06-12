@@ -134,20 +134,20 @@
                 <div>
                     <div class="text-center mb-8">
                         <h2 class="text-2xl font-bold text-secondary">Verificación de Certificado</h2>
-                        <p class="text-gray-500 text-sm">Ingrese el identificador ROC para consultar el certificado</p>
+                        <p class="text-gray-500 text-sm">Ingrese el identificador ROC o nombre de la empresa para consultar el certificado</p>
                     </div>
 
                     <form action="{{ route('certificates.search') }}" method="POST" class="space-y-5">
                         @csrf
                         <div>
-                            <label for="roc" class="block text-sm font-bold text-secondary mb-1">Identificador ROC</label>
+                            <label for="roc" class="block text-sm font-bold text-secondary mb-1">Identificador ROC o Nombre de la Empresa</label>
                             <div class="relative">
                                 <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
                                     <i data-lucide="file-text" class="w-5 h-5"></i>
                                 </span>
                                 <input type="text" id="roc" name="roc" value="{{ old('roc') }}" required 
                                     class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all placeholder-gray-400"
-                                    placeholder="Ej. ROC-003-13">
+                                    placeholder="Ej. ROC-003-13 o Nombre de la Empresa">
                             </div>
                         </div>
 
@@ -219,6 +219,18 @@
 
     <livewire:chatbot />
     @livewireScripts
+    <!-- Botón Flotante IAF CertSearch -->
+    <a href="https://www.iafcertsearch.org/" target="_blank" rel="noopener noreferrer" 
+       class="fixed bottom-6 left-6 z-40 bg-secondary border border-primary-500/30 text-white px-4 py-3 rounded-full shadow-2xl flex items-center gap-2.5 hover:bg-primary-600 transition-all hover:scale-105 group font-medium text-xs md:text-sm backdrop-blur-md">
+        <div class="w-6 h-6 bg-white rounded-full flex items-center justify-center p-0.5 shrink-0 overflow-hidden">
+            <i data-lucide="globe" class="w-4 h-4 text-secondary"></i>
+        </div>
+        <div>
+            <span class="block text-[10px] text-primary-400 uppercase tracking-widest font-bold leading-none">Validación Global</span>
+            <span class="block mt-0.5 leading-none font-bold">Buscar en IAF CertSearch</span>
+        </div>
+    </a>
+
     <script>
         lucide.createIcons();
         window.addEventListener('toggle-chatbot', () => {
