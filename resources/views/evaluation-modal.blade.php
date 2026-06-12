@@ -37,8 +37,8 @@
                 <div class="bg-primary-600 p-8 text-center text-white relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-16 -mt-16"></div>
                     <i data-lucide="award" class="w-16 h-16 mx-auto mb-4"></i>
-                    <h2 class="text-3xl font-bold mb-2">Evaluación de Preparación SGC</h2>
-                    <p class="text-primary-100">Cuestionario inicial para determinar si su organización es candidata para certificar si sistema de gestión de la calidad.</p>
+                    <h2 class="text-3xl font-bold mb-2">Evaluación de Preparación</h2>
+                    <p class="text-primary-100">Determinar si su organización es candidata para certificar si sistema de gestión de la calidad.</p>
                 </div>
                 <div class="p-8 text-center">
                     <p class="text-gray-600 mb-8 text-lg">
