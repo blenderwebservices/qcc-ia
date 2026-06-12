@@ -367,7 +367,7 @@
                         <div class="bg-gray-50 p-6 rounded-xl border border-gray-100">
                             <i data-lucide="book-open-check" class="w-8 h-8 text-primary-500 mb-4"></i>
                             <h5 class="font-bold text-secondary mb-2">Norma a Certificar</h5>
-                            <p class="text-sm text-gray-500">ISO 9001, ISO 14001, NOMs, u otras integraciones que requieran especialistas distintos.</p>
+                            <p class="text-sm text-gray-500">ISO 9001, NOMs, u otras integraciones que requieran especialistas distintos.</p>
                         </div>
                         <div class="bg-gray-50 p-6 rounded-xl border border-gray-100">
                             <i data-lucide="settings" class="w-8 h-8 text-primary-500 mb-4"></i>

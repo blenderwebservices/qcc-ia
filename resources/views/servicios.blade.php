@@ -130,7 +130,7 @@
                     <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
                 </a>
                 <a href="#contacto" class="bg-transparent border border-white/40 text-white hover:bg-white/10 px-8 py-3.5 rounded-full font-bold transition-all flex items-center justify-center gap-2">
-                    Solicitar Asesoría
+                    Solicitar Información
                 </a>
             </div>
         </div>
@@ -319,7 +319,7 @@
                     <div class="bg-primary-500/20 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
                         <i data-lucide="users" class="w-6 h-6 text-primary-300"></i>
                     </div>
-                    <h4 class="text-lg font-bold mb-2">Expertise de Auditores</h4>
+                    <h4 class="text-lg font-bold mb-2">Experiencia de Auditores</h4>
                     <p class="text-gray-400 text-sm leading-relaxed">Contamos con personal altamente capacitado y auditores con amplia experiencia sectorial enfocados en la mejora continua.</p>
                 </div>
                 <!-- Beneficio -->

@@ -126,7 +126,7 @@
                                     <i data-lucide="check-circle-2" class="w-6 h-6"></i>
                                 </div>
                                 <div>
-                                    <p class="text-sm text-gray-500 font-medium">Auditoría Aprobada</p>
+                                    <p class="text-sm text-gray-500 font-medium">Acreditado para certificar en</p>
                                     <p class="font-bold">ISO 9001:2015</p>
                                 </div>
                             </div>

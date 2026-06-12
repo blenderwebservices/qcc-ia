@@ -38,11 +38,11 @@
                     <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-16 -mt-16"></div>
                     <i data-lucide="award" class="w-16 h-16 mx-auto mb-4"></i>
                     <h2 class="text-3xl font-bold mb-2">Evaluación de Preparación SGC</h2>
-                    <p class="text-primary-100">Cuestionario inicial para determinar si su organización es candidata a certificación de calidad.</p>
+                    <p class="text-primary-100">Cuestionario inicial para determinar si su organización es candidata para certificar si sistema de gestión de la calidad.</p>
                 </div>
                 <div class="p-8 text-center">
                     <p class="text-gray-600 mb-8 text-lg">
-                        Este diagnóstico rápido evalúa la madurez de su Sistema de Gestión de Calidad mediante 12 puntos clave. Al finalizar, recibirá un dictamen y recomendaciones estratégicas.
+                        Este diagnóstico rápido evalúa la madurez de su Sistema de Gestión de la Calidad mediante 12 puntos clave. Al finalizar, recibirá un dictamen y recomendaciones estratégicas.
                     </p>
                     <button @click="start()"
                             class="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-4 px-8 rounded-full shadow-lg transition-transform hover:scale-105 flex items-center mx-auto gap-2">
@@ -97,7 +97,7 @@
                             <i data-lucide="book-check" class="w-12 h-12 text-primary-400"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-secondary text-center mb-2">Capacitaciones recientes</h3>
-                        <p class="text-center text-gray-500 mb-6">¿Ha realizado capacitaciones en los últimos 6 meses en alguno de los siguientes temas?</p>
+                        <p class="text-center text-gray-500 mb-6">¿Ha realizado capacitaciones en los últimos 12 meses en alguno de los siguientes temas?</p>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8 overflow-y-auto max-h-[300px] p-2">
                             <template x-for="option in trainingOptions" :key="option">
@@ -178,7 +178,7 @@
                         </button>
                         <a href="/sectores#cotizar" @click="isOpen = false"
                            class="flex-[2] bg-primary-600 hover:bg-primary-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg transition-all text-center">
-                            Solicitar Asesoría Gratuita
+                            Solicitar Información
                         </a>
                     </div>
                 </div>
