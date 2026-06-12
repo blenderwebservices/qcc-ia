@@ -13,6 +13,5 @@ class Certificate extends Model
         'reference_standard',
         'sectors',
         'contact_email',
-        'access_password',
     ];
 }

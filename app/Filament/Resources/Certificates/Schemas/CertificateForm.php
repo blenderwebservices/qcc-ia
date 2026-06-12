@@ -29,10 +29,6 @@ class CertificateForm
                 TextInput::make('contact_email')
                     ->email()
                     ->required(),
-                TextInput::make('access_password')
-                    ->password()
-                    ->revealable()
-                    ->required(),
             ]);
     }
 }

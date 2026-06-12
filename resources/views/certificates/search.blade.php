@@ -51,7 +51,7 @@
         [x-cloak] { display: none !important; }
     </style>
 </head>
-<body x-data="{ showForgot: false }" class="font-sans text-gray-800 bg-gray-50 antialiased selection:bg-primary-500 selection:text-white">
+<body x-data="{}" class="font-sans text-gray-800 bg-gray-50 antialiased selection:bg-primary-500 selection:text-white">
 
     <!-- Navegación -->
     <nav class="bg-white shadow-sm sticky top-0 z-50">
@@ -95,7 +95,7 @@
                     Verifique la <span class="text-primary-400">Autenticidad</span> de su Certificado
                 </h1>
                 <p class="text-lg text-gray-300 mb-8 leading-relaxed font-light">
-                    QCC pone a su disposición esta herramienta para validar la vigencia y estatus de los certificados emitidos. Ingrese su identificador ROC y contraseña asignada para acceder al registro completo.
+                    QCC pone a su disposición esta herramienta para validar la vigencia y estatus de los certificados emitidos. Ingrese su identificador ROC para acceder al registro completo.
                 </p>
                 <div class="space-y-4">
                     <div class="flex items-center gap-3">
@@ -108,7 +108,7 @@
                         <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-primary-400">
                             <i data-lucide="check" class="w-5 h-5"></i>
                         </div>
-                        <span class="text-gray-200">Acceso seguro y confidencial mediante encriptación.</span>
+                        <span class="text-gray-200">Acceso libre y público sin necesidad de credenciales.</span>
                     </div>
                 </div>
             </div>
@@ -130,11 +130,11 @@
                     </div>
                 @endif
 
-                <!-- Login Form -->
-                <div x-show="!showForgot" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0">
+                <!-- Verification Form -->
+                <div>
                     <div class="text-center mb-8">
-                        <h2 class="text-2xl font-bold text-secondary">Acceso al Sistema</h2>
-                        <p class="text-gray-500 text-sm">Ingrese sus credenciales para consultar el certificado</p>
+                        <h2 class="text-2xl font-bold text-secondary">Verificación de Certificado</h2>
+                        <p class="text-gray-500 text-sm">Ingrese el identificador ROC para consultar el certificado</p>
                     </div>
 
                     <form action="{{ route('certificates.search') }}" method="POST" class="space-y-5">
@@ -151,66 +151,11 @@
                             </div>
                         </div>
 
-                        <div>
-                            <label for="access_password" class="block text-sm font-bold text-secondary mb-1">Contraseña de Acceso</label>
-                            <div class="relative">
-                                <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
-                                    <i data-lucide="lock" class="w-5 h-5"></i>
-                                </span>
-                                <input type="password" id="access_password" name="access_password" required 
-                                    class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all placeholder-gray-400"
-                                    placeholder="••••••••">
-                            </div>
-                        </div>
-
                         <button type="submit" 
                             class="w-full py-4 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
                             <i data-lucide="search" class="w-5 h-5"></i>
                             Consultar Registro
                         </button>
-
-                        <div class="text-center pt-4">
-                            <button type="button" @click="showForgot = true" class="text-sm font-semibold text-primary-600 hover:text-primary-700 transition-colors">
-                                ¿Olvidó su contraseña?
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Forgot Password Form -->
-                <div x-show="showForgot" x-cloak x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0">
-                    <div class="text-center mb-8">
-                        <div class="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i data-lucide="key" class="w-8 h-8"></i>
-                        </div>
-                        <h2 class="text-2xl font-bold text-secondary">Recordar Contraseña</h2>
-                        <p class="text-gray-500 text-sm">Enviaremos un recordatorio al correo registrado en su certificado</p>
-                    </div>
-
-                    <form action="{{ route('certificates.forgot-password') }}" method="POST" class="space-y-5">
-                        @csrf
-                        <div>
-                            <label for="forgot_roc" class="block text-sm font-bold text-secondary mb-1">Identificador ROC</label>
-                            <div class="relative">
-                                <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
-                                    <i data-lucide="file-text" class="w-5 h-5"></i>
-                                </span>
-                                <input type="text" id="forgot_roc" name="forgot_roc" required 
-                                    class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all placeholder-gray-400"
-                                    placeholder="Ej. ROC-003-13">
-                            </div>
-                        </div>
-
-                        <div class="space-y-3">
-                            <button type="submit" 
-                                class="w-full py-4 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5">
-                                Enviar Recordatorio
-                            </button>
-                            <button type="button" @click="showForgot = false" 
-                                class="w-full py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-xl transition-all">
-                                Volver al Inicio
-                            </button>
-                        </div>
                     </form>
                 </div>
             </div>
